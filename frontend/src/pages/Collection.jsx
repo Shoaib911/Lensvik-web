@@ -22,39 +22,34 @@ const Collection = () => {
       setFilterState([...filterState, value]);
     }
   };
-
   const applyFilter = () => {
     let productsCopy = products.slice();
-
+  
     if (showSearch && search) {
       productsCopy = productsCopy.filter((item) =>
         item.name.toLowerCase().includes(search.toLowerCase())
       );
     }
-
+  
     if (frameType.length > 0) {
-      productsCopy = productsCopy.filter((item) =>
-        frameType.includes(item.frameType)
-      );
+      productsCopy = productsCopy.filter((item) => frameType.includes(item.subCategory));
     }
     if (frameShape.length > 0) {
-      productsCopy = productsCopy.filter((item) =>
-        frameShape.includes(item.frameShape)
-      );
+      productsCopy = productsCopy.filter((item) => frameShape.includes(item.subCategory));
     }
     if (size.length > 0) {
-      productsCopy = productsCopy.filter((item) => size.includes(item.size));
+      productsCopy = productsCopy.filter((item) => item.sizes.some((s) => size.includes(s)));
     }
     if (gender.length > 0) {
-      productsCopy = productsCopy.filter((item) => gender.includes(item.gender));
+      productsCopy = productsCopy.filter((item) => gender.includes(item.Category));
     }
     productsCopy = productsCopy.filter(
       (item) => item.price >= priceRange[0] && item.price <= priceRange[1]
     );
-
+  
     setFilterProducts(productsCopy);
   };
-
+  
 
   const sortProduct = () => {
     let fpCopy = filterProducts.slice();
@@ -124,7 +119,7 @@ const Collection = () => {
          {/* Frame Shape Filters */}
          <div className={`border border-gray-300 pl-5 py-3 mt-6 ${showFilter ? "" : "hidden"} sm:block`}>
           <p className="mb-3 text-sm font-medium">FRAME SHAPE</p>
-          {['Aviator', 'Wayfarer', 'Rounded', 'Sports'].map((shape) => (
+          {['Aviators', 'Wayfarer', 'Rounded', 'Sports Sunglasses'].map((shape) => (
             <label key={shape} className="flex gap-2 cursor-pointer">
               <input
                 className="w-3"
@@ -163,8 +158,8 @@ const Collection = () => {
           <p className="mb-3 text-sm font-medium">PRICE RANGE</p>
           <input
             type="range"
-            min="200"
-            max="10000"
+            min="0"
+            max="300"
             value={priceRange[1]}
             onChange={(e) => setPriceRange([0, Number(e.target.value)])}
           />

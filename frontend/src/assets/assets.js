@@ -1,58 +1,67 @@
-import p_img1 from './p_img1.png'
-import p_img2_1 from './p_img2_1.png'
-import p_img2_2 from './p_img2_2.png'
-import p_img2_3 from './p_img2_3.png'
-import p_img2_4 from './p_img2_4.png'
-import p_img3 from './p_img3.png'
-import p_img4 from './p_img4.png'
-import p_img5 from './p_img5.png'
-import p_img6 from './p_img6.png'
-import p_img7 from './p_img7.png'
-import p_img8 from './p_img8.png'
-import p_img9 from './p_img9.png'
-import p_img10 from './p_img10.png'
-import p_img11 from './p_img11.png'
-import p_img12 from './p_img12.png'
-import p_img13 from './p_img13.png'
-import p_img14 from './p_img14.png'
-import p_img15 from './p_img15.png'
-import p_img16 from './p_img16.png'
-import p_img17 from './p_img17.png'
-import p_img18 from './p_img18.png'
-import p_img19 from './p_img19.png'
-import p_img20 from './p_img20.png'
-import p_img21 from './p_img21.png'
-import p_img22 from './p_img22.png'
-import p_img23 from './p_img23.png'
-import p_img24 from './p_img24.png'
-import p_img25 from './p_img25.png'
-import p_img26 from './p_img26.png'
-import p_img27 from './p_img27.png'
-import p_img28 from './p_img28.png'
-import p_img29 from './p_img29.png'
-import p_img30 from './p_img30.png'
-import p_img31 from './p_img31.png'
-import p_img32 from './p_img32.png'
-import p_img33 from './p_img33.png'
-import p_img34 from './p_img34.png'
-import p_img35 from './p_img35.png'
-import p_img36 from './p_img36.png'
-import p_img37 from './p_img37.png'
-import p_img38 from './p_img38.png'
-import p_img39 from './p_img39.png'
-import p_img40 from './p_img40.png'
-import p_img41 from './p_img41.png'
-import p_img42 from './p_img42.png'
-import p_img43 from './p_img43.png'
-import p_img44 from './p_img44.png'
-import p_img45 from './p_img45.png'
-import p_img46 from './p_img46.png'
-import p_img47 from './p_img47.png'
-import p_img48 from './p_img48.png'
-import p_img49 from './p_img49.png'
-import p_img50 from './p_img50.png'
-import p_img51 from './p_img51.png'
-import p_img52 from './p_img52.png'
+import a1 from './a1.jpg'
+import a12 from './a1.2.jpg'
+import a13 from './a1.3.jpg'
+import a2 from './a2.jpg'
+import a22 from './a2.2.jpg'
+import a23 from './a2.3.jpg'
+import a3 from './a3.jpg'
+import a32 from './a3.2.jpg'
+import a33 from './a3.3.jpg'
+import a4 from './a4.jpg'
+import a42 from './a4.2.jpg'
+import a5 from './a5.jpg'
+import a52 from './a5.2.jpg'
+import a6 from './a6.jpg'
+import a62 from './a6.2.jpg'
+
+import c1 from './c1.jpg'
+import c12 from './c1.2.jpg'
+import c2 from './c2.jpg'
+import c22 from './c2.2.jpg'
+import c3 from './c3.png'
+import c32 from './c3.2.png'
+
+
+import d1 from './d1.jpg'
+import d12 from './d1.2.jpg'
+import d13 from './d1.3.jpg'
+import d2 from './d2.jpg'
+import d3 from './d3.jpg'
+import d32 from './d3.2.jpg'
+import d33 from './d3.3.jpg'
+import d4 from './d4.jpg'
+import d42 from './d4.2.jpg'
+import d5 from './d5.jpg'
+import d52 from './d5.2.jpg'
+import d6 from './d6.jpg'
+import d62 from './d6.2.jpg'
+
+import e1 from './e1.jpg'
+import e12 from './e1.2.jpg'
+import e2 from './e2.jpg'
+import e22 from './e2.1.jpg'
+import e23 from './e2.3.jpg'
+
+import f1 from './f1.jpg'
+import f2 from './f2.jpg'
+import f22 from './f2.2.jpg'
+import f3 from './f3.jpg'
+import f32 from './f3.2.jpg'
+import f4 from './f4.jpg'
+import f42 from './f4.2.jpg'
+import f5 from './f5.jpg'
+import f52 from './f5.2.jpg'
+
+import g1 from './g1.jpg'
+import g12 from './g1.2.jpg'
+import g2 from './g2.jpg'
+import g22 from './g2.3.jpg'
+import g3 from './g3.jpg'
+import g32 from './g3.2.jpg'
+import g4 from './g4.jpg'
+import g42 from './g4.2.jpg'
+
+
 import accessories from './Accessories.jpg'
 import intelligent_glasses from './Intelligent_glasses.jpg'
 import Kid_Glasses from './Kid_glassess.jpg'
@@ -115,13 +124,15 @@ export const assets = {
     intelligent_glasses
 }
 
-export const products = [
+export const products=[
+    // Full Rim
     {
-        _id: "aaaaa",
-        name: "Women Round Neck Cotton Top",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 100,
-        image: [p_img1],
+        _id: "m-fullrim-1",
+        name: "Classic Black Full Rim Glasses",
+        description: "Timeless black full-rim glasses with a sturdy frame, designed for everyday wear. Perfect for both professional and casual looks.",
+        price: 150,
+        salePrice: 120,
+        image: [a1,a12],
         category: "MEN GLASSES",
         subCategory: "Full Rim",
         sizes: ["S", "M", "L"],
@@ -130,626 +141,1271 @@ export const products = [
         OnSale: true
     },
     {
-        _id: "aaaab",
-        name: "Men Round Neck Pure Cotton T-shirt",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 200,
-        image: [p_img2_1,p_img2_2,p_img2_3,p_img2_4],
-        category: "Men",
-        subCategory: "Topwear",
-        sizes: ["M", "L", "XL"],
-        date: 1716621345448,
-        bestseller: true,
-        OnSale: true
-    },
-    {
-        _id: "aaaac",
-        name: "Girls Round Neck Cotton Top",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 220,
-        image: [p_img3],
-        category: "Kids",
-        subCategory: "Topwear",
-        sizes: ["S", "L", "XL"],
-        date: 1716234545448,
-        bestseller: true,
-        OnSale: true
-    },
-    {
-        _id: "aaaad",
-        name: "Men Round Neck Pure Cotton T-shirt",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 110,
-        image: [p_img4],
-        category: "Men",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "XXL"],
-        date: 1716621345448,
-        bestseller: true
-    },
-    {
-        _id: "aaaae",
-        name: "Women Round Neck Cotton Top",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 130,
-        image: [p_img5],
-        category: "Women",
-        subCategory: "Topwear",
-        sizes: ["M", "L", "XL"],
-        date: 1716622345448,
-        bestseller: true
-    },
-    {
-        _id: "aaaaf",
-        name: "Girls Round Neck Cotton Top",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
+        _id: "m-fullrim-2",
+        name: "Matte Blue Full Rim Glasses",
+        description: "Modern matte blue full-rim glasses offering durability and style. Ideal for long-term wear with lightweight comfort.",
         price: 140,
-        image: [p_img6],
-        category: "Kids",
-        subCategory: "Topwear",
-        sizes: ["S", "L", "XL"],
-        date: 1716623423448,
-        bestseller: true,
-        OnSale: true
-    },
-    {
-        _id: "aaaag",
-        name: "Men Tapered Fit Flat-Front Trousers",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 190,
-        image: [p_img7],
-        category: "Men",
-        subCategory: "Bottomwear",
-        sizes: ["S", "L", "XL"],
-        date: 1716621542448,
-        bestseller: false,
-        OnSale: true
-    },
-    {
-        _id: "aaaah",
-        name: "Men Round Neck Pure Cotton T-shirt",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 140,
-        image: [p_img8],
-        category: "Men",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716622345448,
-        bestseller: false,
-        OnSale: true
-    },
-    {
-        _id: "aaaai",
-        name: "Girls Round Neck Cotton Top",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 100,
-        image: [p_img9],
-        category: "Kids",
-        subCategory: "Topwear",
-        sizes: ["M", "L", "XL"],
-        date: 1716621235448,
-        bestseller: false
-    },
-    {
-        _id: "aaaaj",
-        name: "Men Tapered Fit Flat-Front Trousers",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 110,
-        image: [p_img10],
-        category: "Men",
-        subCategory: "Bottomwear",
-        sizes: ["S", "L", "XL"],
-        date: 1716622235448,
-        bestseller: false
-    },
-    {
-        _id: "aaaak",
-        name: "Men Round Neck Pure Cotton T-shirt",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 120,
-        image: [p_img11],
-        category: "Men",
-        subCategory: "Topwear",
+        salePrice: 110,
+        image: [a12],
+        category: "MEN GLASSES",
+        subCategory: "Full Rim",
         sizes: ["S", "M", "L"],
-        date: 1716623345448,
+        date: 1716634345449,
         bestseller: false,
         OnSale: true
     },
     {
-        _id: "aaaal",
-        name: "Men Round Neck Pure Cotton T-shirt",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 150,
-        image: [p_img12],
-        category: "Men",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716624445448,
-        bestseller: false,
+        _id: "m-fullrim-3",
+        name: "Bold Tortoiseshell Full Rim Glasses",
+        description: "A stylish tortoiseshell frame with a full-rim design, combining vintage aesthetics with modern comfort.",
+        price: 160,
+        salePrice: 130,
+        image: [a12,a13],
+        category: "MEN GLASSES",
+        subCategory: "Full Rim",
+        sizes: ["M", "L"],
+        date: 1716634345450,
+        bestseller: true,
+        OnSale: false
+    },
+
+    // Half Rim
+    {
+        _id: "m-halfrim-1",
+        name: "Minimalist Black Half Rim Glasses",
+        description: "Sleek black half-rim glasses designed for a sophisticated and lightweight feel, suitable for formal and everyday use.",
+        price: 135,
+        salePrice: 110,
+        image: [a2,a23],
+        category: "MEN GLASSES",
+        subCategory: "Half Rim",
+        sizes: ["M", "L"],
+        date: 1716634345451,
+        bestseller: true,
         OnSale: true
     },
     {
-        _id: "aaaam",
-        name: "Women Round Neck Cotton Top",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
+        _id: "m-halfrim-2",
+        name: "Gunmetal Silver Half Rim Glasses",
+        description: "A premium metal half-rim frame with a stylish gunmetal silver finish, built for durability and elegance.",
+        price: 145,
+        salePrice: 115,
+        image: [a22],
+        category: "MEN GLASSES",
+        subCategory: "Half Rim",
+        sizes: ["S", "M", "L"],
+        date: 1716634345452,
+        bestseller: false,
+        OnSale: false
+    },
+    {
+        _id: "m-halfrim-3",
+        name: "Brown Wooden Finish Half Rim Glasses",
+        description: "Wood-inspired brown half-rim glasses for a natural, eco-friendly aesthetic without compromising durability.",
+        price: 155,
+        salePrice: 125,
+        image: [a23,a2],
+        category: "MEN GLASSES",
+        subCategory: "Half Rim",
+        sizes: ["M", "L"],
+        date: 1716634345453,
+        bestseller: true,
+        OnSale: true
+    },
+
+    // Rimless
+    {
+        _id: "m-rimless-1",
+        name: "Ultra-Lightweight Rimless Glasses",
+        description: "Minimalist rimless glasses with a nearly invisible frame, designed for all-day comfort and a barely-there feel.",
+        price: 180,
+        salePrice: 145,
+        image: [a3],
+        category: "MEN GLASSES",
+        subCategory: "Rimless",
+        sizes: ["M", "L"],
+        date: 1716634345454,
+        bestseller: true,
+        OnSale: true
+    },
+    {
+        _id: "m-rimless-2",
+        name: "Transparent Rimless Glasses",
+        description: "Crystal-clear rimless glasses with anti-glare lenses, perfect for a modern, sophisticated look.",
+        price: 170,
+        salePrice: 140,
+        image: [a32],
+        category: "MEN GLASSES",
+        subCategory: "Rimless",
+        sizes: ["S", "M"],
+        date: 1716634345455,
+        bestseller: false,
+        OnSale: false
+    },
+    {
+        _id: "m-rimless-3",
+        name: "Gold Trim Rimless Glasses",
+        description: "Premium rimless glasses with gold accents, designed for an executive, high-class appeal.",
+        price: 190,
+        salePrice: 155,
+        image: [a32,a33],
+        category: "MEN GLASSES",
+        subCategory: "Rimless",
+        sizes: ["M", "L"],
+        date: 1716634345456,
+        bestseller: true,
+        OnSale: true
+    },
+
+    // Blue Light Blocking
+    {
+        _id: "m-blue-1",
+        name: "Matte Black Blue Light Glasses",
+        description: "Protect your eyes with these matte black glasses featuring advanced blue light blocking technology for reduced eye strain.",
         price: 130,
-        image: [p_img13],
-        category: "Women",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716625545448,
-        bestseller: false,
+        salePrice: 105,
+        image: [a4],
+        category: "MEN GLASSES",
+        subCategory: "Blue Light Blocking",
+        sizes: ["S", "M", "L"],
+        date: 1716634345457,
+        bestseller: true,
         OnSale: true
     },
     {
-        _id: "aaaan",
-        name: "Boy Round Neck Pure Cotton T-shirt",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 160,
-        image: [p_img14],
-        category: "Kids",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716626645448,
+        _id: "m-blue-2",
+        name: "Clear Frame Blue Light Glasses",
+        description: "Lightweight, transparent frame with blue light protection, perfect for work-from-home and long screen sessions.",
+        price: 125,
+        salePrice: 100,
+        image: [a42],
+        category: "MEN GLASSES",
+        subCategory: "Blue Light Blocking",
+        sizes: ["M", "L"],
+        date: 1716634345458,
         bestseller: false,
-        OnSale: true
+        OnSale: false
     },
     {
-        _id: "aaaao",
-        name: "Men Tapered Fit Flat-Front Trousers",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
+        _id: "m-blue-3",
+        name: "Metallic Grey Blue Light Glasses",
+        description: "Sleek metallic grey blue light glasses designed for professionals looking for eye protection without compromising on style.",
         price: 140,
-        image: [p_img15],
-        category: "Men",
-        subCategory: "Bottomwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716627745448,
-        bestseller: false,
+        salePrice: 115,
+        image: [a42],
+        category: "MEN GLASSES",
+        subCategory: "Blue Light Blocking",
+        sizes: ["S", "M", "L"],
+        date: 1716634345459,
+        bestseller: true,
+        OnSale: true
+    },
+
+    // Progressive Lenses
+    {
+        _id: "m-progressive-1",
+        name: "Classic Black Progressive Glasses",
+        description: "High-quality progressive lenses with a classic black frame, ideal for smooth vision transition.",
+        price: 200,
+        salePrice: 170,
+        image: [a5],
+        category: "MEN GLASSES",
+        subCategory: "Progressive Lenses",
+        sizes: ["M", "L"],
+        date: 1716634345460,
+        bestseller: true,
         OnSale: true
     },
     {
-        _id: "aaaap",
-        name: "Girls Round Neck Cotton Top",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 170,
-        image: [p_img16],
-        category: "Kids",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716628845448,
+        _id: "m-progressive-2",
+        name: "Titanium Progressive Glasses",
+        description: "Ultra-light titanium frame with progressive lenses for a sophisticated, professional look.",
+        price: 220,
+        salePrice: 185,
+        image: [a52],
+        category: "MEN GLASSES",
+        subCategory: "Progressive Lenses",
+        sizes: ["S", "M"],
+        date: 1716634345461,
         bestseller: false,
-        OnSale: true
+        OnSale: false
     },
     {
-        _id: "aaaaq",
-        name: "Men Tapered Fit Flat-Front Trousers",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
+        _id: "m-progressive-3",
+        name: "Retro Brown Progressive Glasses",
+        description: "A retro brown frame with high-quality progressive lenses, blending vintage style with modern lens technology.",
+        price: 210,
+        salePrice: 175,
+        image: [a5],
+        category: "MEN GLASSES",
+        subCategory: "Progressive Lenses",
+        sizes: ["M", "L"],
+        date: 1716634345462,
+        bestseller: true,
+        OnSale: true
+    },
+
+        // Reading Glasses
+        {
+            _id: "m-reading-1",
+            name: "Lightweight Black Reading Glasses",
+            description: "Ultra-lightweight black reading glasses designed for comfortable all-day wear with crystal-clear lenses for easy reading.",
+            price: 110,
+            salePrice: 90,
+            image: [a6],
+            category: "MEN GLASSES",
+            subCategory: "Reading Glasses",
+            sizes: ["S", "M", "L"],
+            date: 1716634345463,
+            bestseller: true,
+            OnSale: true
+        },
+        {
+            _id: "m-reading-2",
+            name: "Flexible Blue Reading Glasses",
+            description: "Stylish blue reading glasses with a flexible, durable frame and anti-fatigue lenses for clear and sharp vision.",
+            price: 120,
+            salePrice: 95,
+            image: [a62],
+            category: "MEN GLASSES",
+            subCategory: "Reading Glasses",
+            sizes: ["M", "L"],
+            date: 1716634345464,
+            bestseller: false,
+            OnSale: false
+        },
+        {
+            _id: "m-reading-3",
+            name: "Brown Tortoiseshell Reading Glasses",
+            description: "A timeless tortoiseshell frame with premium reading lenses, combining style and function for everyday use.",
+            price: 130,
+            salePrice: 100,
+            image: [a6],
+            category: "MEN GLASSES",
+            subCategory: "Reading Glasses",
+            sizes: ["S", "M", "L"],
+            date: 1716634345465,
+            bestseller: true,
+            OnSale: true
+        },
+ 
+        //Women
+         // Full Rim
+    {
+        _id: "m-fullrim-1",
+        name: "Classic Black Full Rim Glasses",
+        description: "Timeless black full-rim glasses with a sturdy frame, designed for everyday wear. Perfect for both professional and casual looks.",
         price: 150,
-        image: [p_img17],
-        category: "Men",
-        subCategory: "Bottomwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716629945448,
-        bestseller: false
-    },
-    {
-        _id: "aaaar",
-        name: "Boy Round Neck Pure Cotton T-shirt",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 180,
-        image: [p_img18],
-        category: "Kids",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716631045448,
-        bestseller: false
-    },
-    {
-        _id: "aaaas",
-        name: "Boy Round Neck Pure Cotton T-shirt",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 160,
-        image: [p_img19],
-        category: "Kids",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716632145448,
-        bestseller: false
-    },
-    {
-        _id: "aaaat",
-        name: "Women Palazzo Pants with Waist Belt",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 190,
-        image: [p_img20],
-        category: "Women",
-        subCategory: "Bottomwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716633245448,
-        bestseller: false
-    },
-    {
-        _id: "aaaau",
-        name: "Women Zip-Front Relaxed Fit Jacket",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 170,
-        image: [p_img21],
-        category: "Women",
-        subCategory: "Winterwear",
-        sizes: ["S", "M", "L", "XL"],
+        salePrice: 120,
+        image: [a1,a12],
+        category: "WOMEN GLASSES",
+        subCategory: "Full Rim",
+        sizes: ["S", "M", "L"],
         date: 1716634345448,
-        bestseller: false
+        bestseller: true,
+        OnSale: true
     },
     {
-        _id: "aaaav",
-        name: "Women Palazzo Pants with Waist Belt",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 200,
-        image: [p_img22],
-        category: "Women",
-        subCategory: "Bottomwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716635445448,
-        bestseller: false
+        _id: "m-fullrim-2",
+        name: "Matte Blue Full Rim Glasses",
+        description: "Modern matte blue full-rim glasses offering durability and style. Ideal for long-term wear with lightweight comfort.",
+        price: 140,
+        salePrice: 110,
+        image: [a12],
+        category: "WOMEN GLASSES",
+        subCategory: "Full Rim",
+        sizes: ["S", "M", "L"],
+        date: 1716634345449,
+        bestseller: false,
+        OnSale: true
     },
     {
-        _id: "aaaaw",
-        name: "Boy Round Neck Pure Cotton T-shirt",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
+        _id: "m-fullrim-3",
+        name: "Bold Tortoiseshell Full Rim Glasses",
+        description: "A stylish tortoiseshell frame with a full-rim design, combining vintage aesthetics with modern comfort.",
+        price: 160,
+        salePrice: 130,
+        image: [a12,a13],
+        category: "WOMEN GLASSES",
+        subCategory: "Full Rim",
+        sizes: ["M", "L"],
+        date: 1716634345450,
+        bestseller: true,
+        OnSale: false
+    },
+
+    // Half Rim
+    {
+        _id: "m-halfrim-1",
+        name: "Minimalist Black Half Rim Glasses",
+        description: "Sleek black half-rim glasses designed for a sophisticated and lightweight feel, suitable for formal and everyday use.",
+        price: 135,
+        salePrice: 110,
+        image: [a2,a23],
+        category: "WOMEN GLASSES",
+        subCategory: "Half Rim",
+        sizes: ["M", "L"],
+        date: 1716634345451,
+        bestseller: true,
+        OnSale: true
+    },
+    {
+        _id: "m-halfrim-2",
+        name: "Gunmetal Silver Half Rim Glasses",
+        description: "A premium metal half-rim frame with a stylish gunmetal silver finish, built for durability and elegance.",
+        price: 145,
+        salePrice: 115,
+        image: [a22],
+        category: "WOMEN GLASSES",
+        subCategory: "Half Rim",
+        sizes: ["S", "M", "L"],
+        date: 1716634345452,
+        bestseller: false,
+        OnSale: false
+    },
+    {
+        _id: "m-halfrim-3",
+        name: "Brown Wooden Finish Half Rim Glasses",
+        description: "Wood-inspired brown half-rim glasses for a natural, eco-friendly aesthetic without compromising durability.",
+        price: 155,
+        salePrice: 125,
+        image: [a23,a2],
+        category: "WOMEN GLASSES",
+        subCategory: "Half Rim",
+        sizes: ["M", "L"],
+        date: 1716634345453,
+        bestseller: true,
+        OnSale: true
+    },
+
+    // Rimless
+    {
+        _id: "m-rimless-1",
+        name: "Ultra-Lightweight Rimless Glasses",
+        description: "Minimalist rimless glasses with a nearly invisible frame, designed for all-day comfort and a barely-there feel.",
         price: 180,
-        image: [p_img23],
-        category: "Kids",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716636545448,
-        bestseller: false
+        salePrice: 145,
+        image: [a3],
+        category: "WOMEN GLASSES",
+        subCategory: "Rimless",
+        sizes: ["M", "L"],
+        date: 1716634345454,
+        bestseller: true,
+        OnSale: true
     },
     {
-        _id: "aaaax",
-        name: "Boy Round Neck Pure Cotton T-shirt",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 210,
-        image: [p_img24],
-        category: "Kids",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716637645448,
-        bestseller: false
+        _id: "m-rimless-2",
+        name: "Transparent Rimless Glasses",
+        description: "Crystal-clear rimless glasses with anti-glare lenses, perfect for a modern, sophisticated look.",
+        price: 170,
+        salePrice: 140,
+        image: [a32],
+        category: "WOMEN GLASSES",
+        subCategory: "Rimless",
+        sizes: ["S", "M"],
+        date: 1716634345455,
+        bestseller: false,
+        OnSale: false
     },
     {
-        _id: "aaaay",
-        name: "Girls Round Neck Cotton Top",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
+        _id: "m-rimless-3",
+        name: "Gold Trim Rimless Glasses",
+        description: "Premium rimless glasses with gold accents, designed for an executive, high-class appeal.",
         price: 190,
-        image: [p_img25],
-        category: "Kids",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716638745448,
-        bestseller: false
+        salePrice: 155,
+        image: [a32,a33],
+        category: "WOMEN GLASSES",
+        subCategory: "Rimless",
+        sizes: ["M", "L"],
+        date: 1716634345456,
+        bestseller: true,
+        OnSale: true
+    },
+
+    // Blue Light Blocking
+    {
+        _id: "m-blue-1",
+        name: "Matte Black Blue Light Glasses",
+        description: "Protect your eyes with these matte black glasses featuring advanced blue light blocking technology for reduced eye strain.",
+        price: 130,
+        salePrice: 105,
+        image: [a4],
+        category: "WOMEN GLASSES",
+        subCategory: "Blue Light Blocking",
+        sizes: ["S", "M", "L"],
+        date: 1716634345457,
+        bestseller: true,
+        OnSale: true
     },
     {
-        _id: "aaaaz",
-        name: "Women Zip-Front Relaxed Fit Jacket",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 220,
-        image: [p_img26],
-        category: "Women",
-        subCategory: "Winterwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716639845448,
-        bestseller: false
+        _id: "m-blue-2",
+        name: "Clear Frame Blue Light Glasses",
+        description: "Lightweight, transparent frame with blue light protection, perfect for work-from-home and long screen sessions.",
+        price: 125,
+        salePrice: 100,
+        image: [a42],
+        category: "WOMEN GLASSES",
+        subCategory: "Blue Light Blocking",
+        sizes: ["M", "L"],
+        date: 1716634345458,
+        bestseller: false,
+        OnSale: false
     },
     {
-        _id: "aaaba",
-        name: "Girls Round Neck Cotton Top",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
+        _id: "m-blue-3",
+        name: "Metallic Grey Blue Light Glasses",
+        description: "Sleek metallic grey blue light glasses designed for professionals looking for eye protection without compromising on style.",
+        price: 140,
+        salePrice: 115,
+        image: [a42],
+        category: "WOMEN GLASSES",
+        subCategory: "Blue Light Blocking",
+        sizes: ["S", "M", "L"],
+        date: 1716634345459,
+        bestseller: true,
+        OnSale: true
+    },
+
+    // Progressive Lenses
+    {
+        _id: "m-progressive-1",
+        name: "Classic Black Progressive Glasses",
+        description: "High-quality progressive lenses with a classic black frame, ideal for smooth vision transition.",
         price: 200,
-        image: [p_img27],
-        category: "Kids",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716640945448,
-        bestseller: false
+        salePrice: 170,
+        image: [a5],
+        category: "WOMEN GLASSES",
+        subCategory: "Progressive Lenses",
+        sizes: ["M", "L"],
+        date: 1716634345460,
+        bestseller: true,
+        OnSale: true
     },
     {
-        _id: "aaabb",
-        name: "Men Slim Fit Relaxed Denim Jacket",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 230,
-        image: [p_img28],
-        category: "Men",
-        subCategory: "Winterwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716642045448,
-        bestseller: false
-    },
-    {
-        _id: "aaabc",
-        name: "Women Round Neck Cotton Top",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 210,
-        image: [p_img29],
-        category: "Women",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716643145448,
-        bestseller: false
-    },
-    {
-        _id: "aaabd",
-        name: "Girls Round Neck Cotton Top",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 240,
-        image: [p_img30],
-        category: "Kids",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716644245448,
-        bestseller: false
-    },
-    {
-        _id: "aaabe",
-        name: "Men Round Neck Pure Cotton T-shirt",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
+        _id: "m-progressive-2",
+        name: "Titanium Progressive Glasses",
+        description: "Ultra-light titanium frame with progressive lenses for a sophisticated, professional look.",
         price: 220,
-        image: [p_img31],
-        category: "Men",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716645345448,
-        bestseller: false
+        salePrice: 185,
+        image: [a52],
+        category: "WOMEN GLASSES",
+        subCategory: "Progressive Lenses",
+        sizes: ["S", "M"],
+        date: 1716634345461,
+        bestseller: false,
+        OnSale: false
     },
     {
-        _id: "aaabf",
-        name: "Men Round Neck Pure Cotton T-shirt",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 250,
-        image: [p_img32],
-        category: "Men",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716646445448,
-        bestseller: false
+        _id: "m-progressive-3",
+        name: "Retro Brown Progressive Glasses",
+        description: "A retro brown frame with high-quality progressive lenses, blending vintage style with modern lens technology.",
+        price: 210,
+        salePrice: 175,
+        image: [a5],
+        category: "WOMEN GLASSES",
+        subCategory: "Progressive Lenses",
+        sizes: ["M", "L"],
+        date: 1716634345462,
+        bestseller: true,
+        OnSale: true
+    },
+
+        // Reading Glasses
+        {
+            _id: "m-reading-1",
+            name: "Lightweight Black Reading Glasses",
+            description: "Ultra-lightweight black reading glasses designed for comfortable all-day wear with crystal-clear lenses for easy reading.",
+            price: 110,
+            salePrice: 90,
+            image: [a6],
+            category: "WOMEN GLASSES",
+            subCategory: "Reading Glasses",
+            sizes: ["S", "M", "L"],
+            date: 1716634345463,
+            bestseller: true,
+            OnSale: true
+        },
+        {
+            _id: "m-reading-2",
+            name: "Flexible Blue Reading Glasses",
+            description: "Stylish blue reading glasses with a flexible, durable frame and anti-fatigue lenses for clear and sharp vision.",
+            price: 120,
+            salePrice: 95,
+            image: [a62],
+            category: "WOMEN GLASSES",
+            subCategory: "Reading Glasses",
+            sizes: ["M", "L"],
+            date: 1716634345464,
+            bestseller: false,
+            OnSale: false
+        },
+        {
+            _id: "m-reading-3",
+            name: "Brown Tortoiseshell Reading Glasses",
+            description: "A timeless tortoiseshell frame with premium reading lenses, combining style and function for everyday use.",
+            price: 130,
+            salePrice: 100,
+            image: [a6],
+            category: "WOMEN GLASSES",
+            subCategory: "Reading Glasses",
+            sizes: ["S", "M", "L"],
+            date: 1716634345465,
+            bestseller: true,
+            OnSale: true
+        },
+
+
+        {
+            _id: "k-prescription-1",
+            name: "Durable Black Kids Prescription Glasses",
+            description: "Lightweight, impact-resistant prescription glasses for kids, designed for durability and comfort.",
+            price: 90,
+            salePrice: 75,
+            image: [c1],
+            category: "KIDS GLASSES",
+            subCategory: "Prescription",
+            sizes: ["S", "M"],
+            date: 1716634345466,
+            bestseller: true,
+            OnSale: true
+        },
+        {
+            _id: "k-prescription-2",
+            name: "Flexible Blue Kids Prescription Glasses",
+            description: "Flexible, bendable frame with prescription lenses, ensuring safety and comfort for active kids.",
+            price: 95,
+            salePrice: 80,
+            image: [c12],
+            category: "KIDS GLASSES",
+            subCategory: "Prescription",
+            sizes: ["S", "M", "L"],
+            date: 1716634345467,
+            bestseller: false,
+            OnSale: false
+        },
+        {
+            _id: "k-prescription-3",
+            name: "Pink Round Kids Prescription Glasses",
+            description: "Adorable round pink frames with lightweight prescription lenses, perfect for young children.",
+            price: 100,
+            salePrice: 85,
+            image: [c1],
+            category: "KIDS GLASSES",
+            subCategory: "Prescription",
+            sizes: ["S", "M"],
+            date: 1716634345468,
+            bestseller: true,
+            OnSale: true
+        },
+    
+        // Kids Sunglasses
+        {
+            _id: "k-sunglasses-1",
+            name: "UV Protection Black Kids Sunglasses",
+            description: "Stylish black sunglasses with UV400 protection, ensuring safety from harmful sun rays.",
+            price: 80,
+            salePrice: 65,
+            image: [c2],
+            category: "KIDS GLASSES",
+            subCategory: "Sunglasses",
+            sizes: ["M", "L"],
+            date: 1716634345469,
+            bestseller: true,
+            OnSale: true
+        },
+        {
+            _id: "k-sunglasses-2",
+            name: "Blue Reflective Kids Sunglasses",
+            description: "Trendy blue mirrored sunglasses designed for maximum sun protection and style.",
+            price: 85,
+            salePrice: 70,
+            image: [c22],
+            category: "KIDS GLASSES",
+            subCategory: "Sunglasses",
+            sizes: ["S", "M"],
+            date: 1716634345470,
+            bestseller: false,
+            OnSale: false
+        },
+        {
+            _id: "k-sunglasses-3",
+            name: "Pink Heart-Shaped Kids Sunglasses",
+            description: "Cute pink heart-shaped sunglasses with UV protection, perfect for outdoor fun.",
+            price: 90,
+            salePrice: 75,
+            image: [c2],
+            category: "KIDS GLASSES",
+            subCategory: "Sunglasses",
+            sizes: ["S", "M"],
+            date: 1716634345471,
+            bestseller: true,
+            OnSale: true
+        },
+    
+        // Kids Blue Light Glasses
+        {
+            _id: "k-blue-1",
+            name: "Anti-Glare Blue Light Kids Glasses",
+            description: "Blue light filtering glasses designed to reduce digital eye strain for kids who spend time on screens.",
+            price: 95,
+            salePrice: 80,
+            image: [c3],
+            category: "KIDS GLASSES",
+            subCategory: "Blue LightGlasses",
+            sizes: ["S", "M", "L"],
+            date: 1716634345472,
+            bestseller: true,
+            OnSale: true
+        },
+        {
+            _id: "k-blue-2",
+            name: "Transparent Frame Blue Light Glasses",
+            description: "Lightweight, transparent frame with blue light blocking technology to protect young eyes.",
+            price: 100,
+            salePrice: 85,
+            image: [c32],
+            category: "KIDS GLASSES",
+            subCategory: "Blue LightGlasses",
+            sizes: ["S", "M"],
+            date: 1716634345473,
+            bestseller: false,
+            OnSale: false
+        },
+        {
+            _id: "k-blue-3",
+            name: "Flexible Blue Light Kids Glasses",
+            description: "Durable, flexible frame with blue light protection, perfect for school and screen time.",
+            price: 105,
+            salePrice: 90,
+            image: [c3],
+            category: "KIDS GLASSES",
+            subCategory: "Blue LightGlasses",
+            sizes: ["S", "M", "L"],
+            date: 1716634345474,
+            bestseller: true,
+            OnSale: true
+        },
+
+        // Polarized Sunglasses
+    {
+        _id: "s-polarized-1",
+        name: "Classic Black Polarized Sunglasses",
+        description: "Timeless black polarized sunglasses with UV protection for enhanced clarity and reduced glare.",
+        price: 120,
+        salePrice: 100,
+        image: [d1],
+        category: "SUNGLASSES",
+        subCategory: "Polarized",
+        sizes: ["M", "L"],
+        date: 1716634345475,
+        bestseller: true,
+        OnSale: true
     },
     {
-        _id: "aaabg",
-        name: "Girls Round Neck Cotton Top",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 230,
-        image: [p_img33],
-        category: "Kids",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716647545448,
-        bestseller: false
+        _id: "s-polarized-2",
+        name: "Blue Mirrored Polarized Sunglasses",
+        description: "Trendy blue mirrored sunglasses with high-quality polarized lenses for ultimate sun protection.",
+        price: 130,
+        salePrice: 110,
+        image: [d12,d1],
+        category: "SUNGLASSES",
+        subCategory: "Polarized",
+        sizes: ["S", "M"],
+        date: 1716634345476,
+        bestseller: false,
+        OnSale: false
     },
     {
-        _id: "aaabh",
-        name: "Women Round Neck Cotton Top",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 260,
-        image: [p_img34],
-        category: "Women",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716648645448,
-        bestseller: false
+        _id: "s-polarized-3",
+        name: "Brown Tinted Polarized Sunglasses",
+        description: "Elegant brown-tinted polarized sunglasses, perfect for driving and outdoor adventures.",
+        price: 125,
+        salePrice: 105,
+        image: [d13],
+        category: "SUNGLASSES",
+        subCategory: "Polarized",
+        sizes: ["M", "L"],
+        date: 1716634345477,
+        bestseller: true,
+        OnSale: true
+    },
+
+    // Non-Polarized Sunglasses
+    {
+        _id: "s-nonpolarized-1",
+        name: "Casual Non-Polarized Black Sunglasses",
+        description: "Simple yet stylish black non-polarized sunglasses for everyday wear and sun protection.",
+        price: 100,
+        salePrice: 85,
+        image: [d2],
+        category: "SUNGLASSES",
+        subCategory: "Non-Polarized",
+        sizes: ["S", "M"],
+        date: 1716634345478,
+        bestseller: false,
+        OnSale: false
     },
     {
-        _id: "aaabi",
-        name: "Women Zip-Front Relaxed Fit Jacket",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 240,
-        image: [p_img35],
-        category: "Women",
-        subCategory: "Winterwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716649745448,
-        bestseller: false
+        _id: "s-nonpolarized-2",
+        name: "Tortoiseshell Non-Polarized Sunglasses",
+        description: "Trendy tortoiseshell sunglasses with non-polarized lenses for a stylish, modern look.",
+        price: 110,
+        salePrice: 95,
+        image: [d2],
+        category: "SUNGLASSES",
+        subCategory: "Non-Polarized",
+        sizes: ["M", "L"],
+        date: 1716634345479,
+        bestseller: true,
+        OnSale: true
     },
     {
-        _id: "aaabj",
-        name: "Women Zip-Front Relaxed Fit Jacket",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 270,
-        image: [p_img36],
-        category: "Women",
-        subCategory: "Winterwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716650845448,
-        bestseller: false
+        _id: "s-nonpolarized-3",
+        name: "Transparent Frame Non-Polarized Sunglasses",
+        description: "Minimalist transparent frame sunglasses for a sleek and lightweight feel.",
+        price: 115,
+        salePrice: 100,
+        image: [d2],
+        category: "SUNGLASSES",
+        subCategory: "Non-Polarized",
+        sizes: ["S", "M", "L"],
+        date: 1716634345480,
+        bestseller: true,
+        OnSale: true
+    },
+
+    // Aviators
+    {
+        _id: "s-aviator-1",
+        name: "Gold Frame Aviator Sunglasses",
+        description: "Classic gold aviator sunglasses with UV protection and a sleek metal frame.",
+        price: 140,
+        salePrice: 120,
+        image: [d3],
+        category: "SUNGLASSES",
+        subCategory: "Aviators",
+        sizes: ["M", "L"],
+        date: 1716634345481,
+        bestseller: true,
+        OnSale: true
     },
     {
-        _id: "aaabk",
-        name: "Women Round Neck Cotton Top",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 250,
-        image: [p_img37],
-        category: "Women",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716651945448,
-        bestseller: false
+        _id: "s-aviator-2",
+        name: "Silver Mirror Aviator Sunglasses",
+        description: "Trendy silver mirrored aviator sunglasses for a bold and stylish look.",
+        price: 145,
+        salePrice: 125,
+        image: [d32],
+        category: "SUNGLASSES",
+        subCategory: "Aviators",
+        sizes: ["M", "L"],
+        date: 1716634345482,
+        bestseller: false,
+        OnSale: false
     },
     {
-        _id: "aaabl",
-        name: "Men Round Neck Pure Cotton T-shirt",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 280,
-        image: [p_img38],
-        category: "Men",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716653045448,
-        bestseller: false
+        _id: "s-aviator-3",
+        name: "Black Aviator Sunglasses",
+        description: "Iconic black aviator sunglasses with anti-glare lenses for superior visibility.",
+        price: 135,
+        salePrice: 115,
+        image: [d33],
+        category: "SUNGLASSES",
+        subCategory: "Aviators",
+        sizes: ["S", "M", "L"],
+        date: 1716634345483,
+        bestseller: true,
+        OnSale: true
+    },
+
+    // Wayfarer
+    {
+        _id: "s-wayfarer-1",
+        name: "Classic Black Wayfarer Sunglasses",
+        description: "Timeless black wayfarer sunglasses with a sturdy frame and UV protection.",
+        price: 110,
+        salePrice: 95,
+        image: [d4],
+        category: "SUNGLASSES",
+        subCategory: "Wayfarer",
+        sizes: ["M", "L"],
+        date: 1716634345484,
+        bestseller: true,
+        OnSale: true
     },
     {
-        _id: "aaabm",
-        name: "Men Printed Plain Cotton Shirt",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 260,
-        image: [p_img39],
-        category: "Men",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716654145448,
-        bestseller: false
+        _id: "s-wayfarer-2",
+        name: "Brown Gradient Wayfarer Sunglasses",
+        description: "Stylish brown gradient wayfarer sunglasses for a retro yet modern look.",
+        price: 115,
+        salePrice: 100,
+        image: [d42],
+        category: "SUNGLASSES",
+        subCategory: "Wayfarer",
+        sizes: ["S", "M"],
+        date: 1716634345485,
+        bestseller: false,
+        OnSale: false
     },
     {
-        _id: "aaabn",
-        name: "Men Slim Fit Relaxed Denim Jacket",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 290,
-        image: [p_img40],
-        category: "Men",
-        subCategory: "Winterwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716655245448,
-        bestseller: false
+        _id: "s-wayfarer-3",
+        name: "Blue Frame Wayfarer Sunglasses",
+        description: "Trendy blue frame wayfarer sunglasses with a fresh, youthful design.",
+        price: 120,
+        salePrice: 105,
+        image: [d4],
+        category: "SUNGLASSES",
+        subCategory: "Wayfarer",
+        sizes: ["S", "M", "L"],
+        date: 1716634345486,
+        bestseller: true,
+        OnSale: true
+    },
+
+    // Rounded Sunglasses
+    {
+        _id: "s-rounded-1",
+        name: "Retro Round Metal Frame Sunglasses",
+        description: "Vintage round sunglasses with a metal frame for a classic aesthetic.",
+        price: 130,
+        salePrice: 110,
+        image: [d5],
+        category: "SUNGLASSES",
+        subCategory: "Rounded",
+        sizes: ["M", "L"],
+        date: 1716634345487,
+        bestseller: true,
+        OnSale: true
     },
     {
-        _id: "aaabo",
-        name: "Men Round Neck Pure Cotton T-shirt",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 270,
-        image: [p_img41],
-        category: "Men",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716656345448,
-        bestseller: false
+        _id: "s-rounded-2",
+        name: "Black and Gold Round Sunglasses",
+        description: "Elegant black and gold round sunglasses with anti-glare coated lenses.",
+        price: 135,
+        salePrice: 115,
+        image: [d52],
+        category: "SUNGLASSES",
+        subCategory: "Rounded",
+        sizes: ["S", "M"],
+        date: 1716634345488,
+        bestseller: false,
+        OnSale: false
     },
     {
-        _id: "aaabp",
-        name: "Boy Round Neck Pure Cotton T-shirt",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
+        _id: "s-rounded-3",
+        name: "Tortoiseshell Round Sunglasses",
+        description: "Classic tortoiseshell round sunglasses with stylish tinted lenses.",
+        price: 140,
+        salePrice: 120,
+        image: [d5],
+        category: "SUNGLASSES",
+        subCategory: "Rounded",
+        sizes: ["S", "M", "L"],
+        date: 1716634345489,
+        bestseller: true,
+        OnSale: true
+    },
+
+    // Sports Sunglasses
+    {
+        _id: "s-sports-1",
+        name: "Wraparound Sports Sunglasses",
+        description: "Durable wraparound sports sunglasses for cycling, running, and outdoor activities.",
+        price: 150,
+        salePrice: 130,
+        image: [d6],
+        category: "SUNGLASSES",
+        subCategory: "Sports Sunglasses",
+        sizes: ["M", "L"],
+        date: 1716634345490,
+        bestseller: true,
+        OnSale: true
+    },
+    {
+        _id: "s-sports-2",
+        name: "Polarized Athletic Sunglasses",
+        description: "High-performance polarized sports sunglasses with anti-slip nose pads.",
+        price: 155,
+        salePrice: 135,
+        image: [d62],
+        category: "SUNGLASSES",
+        subCategory: "Sports Sunglasses",
+        sizes: ["S", "M"],
+        date: 1716634345491,
+        bestseller: false,
+        OnSale: false
+    },
+    {
+        _id: "s-sports-3",
+        name: "UV Protection Sports Sunglasses",
+        description: "Advanced UV protection sports sunglasses with impact-resistant lenses.",
+        price: 160,
+        salePrice: 140,
+        image: [d6],
+        category: "SUNGLASSES",
+        subCategory: "Sports Sunglasses",
+        sizes: ["S", "M", "L"],
+        date: 1716634345492,
+        bestseller: true,
+        OnSale: true
+    },
+
+    // Smart Lenses
+    {
+        _id: "i-smart-1",
+        name: "AI-Enhanced Smart Glasses",
+        description: "Next-gen smart glasses with AI-powered real-time translation and voice commands.",
         price: 300,
-        image: [p_img42],
-        category: "Kids",
-        subCategory: "Topwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716657445448,
-        bestseller: false
+        salePrice: 270,
+        image: [e1],
+        category: "INTELLIGENT GLASSES",
+        subCategory: "Smart Lenses",
+        sizes: ["M", "L"],
+        date: 1716634345500,
+        bestseller: true,
+        OnSale: true
     },
     {
-        _id: "aaabq",
-        name: "Kid Tapered Slim Fit Trouser",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 280,
-        image: [p_img43],
-        category: "Kids",
-        subCategory: "Bottomwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716658545448,
-        bestseller: false
-    },
-    {
-        _id: "aaabr",
-        name: "Women Zip-Front Relaxed Fit Jacket",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 310,
-        image: [p_img44],
-        category: "Women",
-        subCategory: "Winterwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716659645448,
-        bestseller: false
-    },
-    {
-        _id: "aaabs",
-        name: "Men Slim Fit Relaxed Denim Jacket",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 290,
-        image: [p_img45],
-        category: "Men",
-        subCategory: "Winterwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716660745448,
-        bestseller: false
-    },
-    {
-        _id: "aaabt",
-        name: "Men Slim Fit Relaxed Denim Jacket",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 320,
-        image: [p_img46],
-        category: "Men",
-        subCategory: "Winterwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716661845448,
-        bestseller: false
-    },
-    {
-        _id: "aaabu",
-        name: "Kid Tapered Slim Fit Trouser",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 300,
-        image: [p_img47],
-        category: "Kids",
-        subCategory: "Bottomwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716662945448,
-        bestseller: false
-    },
-    {
-        _id: "aaabv",
-        name: "Men Slim Fit Relaxed Denim Jacket",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 330,
-        image: [p_img48],
-        category: "Men",
-        subCategory: "Winterwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716664045448,
-        bestseller: false
-    },
-    {
-        _id: "aaabw",
-        name: "Kid Tapered Slim Fit Trouser",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 310,
-        image: [p_img49],
-        category: "Kids",
-        subCategory: "Bottomwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716665145448,
-        bestseller: false
-    },
-    {
-        _id: "aaabx",
-        name: "Kid Tapered Slim Fit Trouser",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 340,
-        image: [p_img50],
-        category: "Kids",
-        subCategory: "Bottomwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716666245448, bestseller: false
-    },
-    {
-        _id: "aaaby",
-        name: "Women Zip-Front Relaxed Fit Jacket",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
-        price: 320,
-        image: [p_img51],
-        category: "Women",
-        subCategory: "Winterwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716667345448,
-        bestseller: false
-    },
-    {
-        _id: "aaabz",
-        name: "Men Slim Fit Relaxed Denim Jacket",
-        description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
+        _id: "i-smart-2",
+        name: "Augmented Reality Smart Glasses",
+        description: "High-tech AR smart glasses with a transparent display and intuitive touch controls.",
         price: 350,
-        image: [p_img52],
-        category: "Men",
-        subCategory: "Winterwear",
-        sizes: ["S", "M", "L", "XL"],
-        date: 1716668445448,
-        bestseller: false
+        salePrice: 320,
+        image: [e12],
+        category: "INTELLIGENT GLASSES",
+        subCategory: "Smart Lenses",
+        sizes: ["S", "M"],
+        date: 1716634345501,
+        bestseller: false,
+        OnSale: false
+    },
+    {
+        _id: "i-smart-3",
+        name: "Fitness Tracker Smart Glasses",
+        description: "Lightweight smart glasses with built-in fitness tracking and heart rate monitoring.",
+        price: 280,
+        salePrice: 250,
+        image: [e1],
+        category: "INTELLIGENT GLASSES",
+        subCategory: "Smart Lenses",
+        sizes: ["M", "L"],
+        date: 1716634345502,
+        bestseller: true,
+        OnSale: true
+    },
+
+    // Blue Light Filter Glasses
+    {
+        _id: "i-blue-1",
+        name: "Ultra-Clear Blue Light Glasses",
+        description: "Stylish glasses with a blue light filter, perfect for reducing eye strain during screen time.",
+        price: 100,
+        salePrice: 85,
+        image: [e2],
+        category: "INTELLIGENT GLASSES",
+        subCategory: "Blue Light Filter",
+        sizes: ["S", "M", "L"],
+        date: 1716634345503,
+        bestseller: false,
+        OnSale: false
+    },
+    {
+        _id: "i-blue-2",
+        name: "Anti-Glare Blue Light Glasses",
+        description: "Advanced anti-glare blue light glasses designed for prolonged use with digital screens.",
+        price: 120,
+        salePrice: 100,
+        image: [e22],
+        category: "INTELLIGENT GLASSES",
+        subCategory: "Blue Light Filter",
+        sizes: ["M", "L"],
+        date: 1716634345504,
+        bestseller: true,
+        OnSale: true
+    },
+    {
+        _id: "i-blue-3",
+        name: "Retro Round Blue Light Glasses",
+        description: "Classic round-frame glasses with blue light blocking technology for all-day comfort.",
+        price: 110,
+        salePrice: 95,
+        image: [e23],
+        category: "INTELLIGENT GLASSES",
+        subCategory: "Blue Light Filter",
+        sizes: ["S", "M"],
+        date: 1716634345505,
+        bestseller: true,
+        OnSale: true
+    },
+
+     // Multifocal Lenses
+     {
+        _id: "l-multi-1",
+        name: "UltraClear Multifocal Lenses",
+        description: "Advanced multifocal lenses providing sharp vision at all distances.",
+        price: 60,
+        salePrice: 50,
+        image: [f1],
+        category: "LENSES",
+        subCategory: "Multifocal",
+        sizes: ["Standard"],
+        date: 1716634345600,
+        bestseller: true,
+        OnSale: true
+    },
+    {
+        _id: "l-multi-2",
+        name: "Precision Vision Multifocal Lenses",
+        description: "Comfortable, high-definition multifocal lenses for seamless transition between near and far vision.",
+        price: 70,
+        salePrice: 60,
+        image: [f1],
+        category: "LENSES",
+        subCategory: "Multifocal",
+        sizes: ["Standard"],
+        date: 1716634345601,
+        bestseller: false,
+        OnSale: false
+    },
+
+    // Daily Disposable Lenses
+    {
+        _id: "l-daily-1",
+        name: "FreshLook Daily Disposable Lenses",
+        description: "Convenient daily lenses offering crisp, clear vision with superior comfort.",
+        price: 30,
+        salePrice: 25,
+        image: [f2],
+        category: "LENSES",
+        subCategory: "Daily Disposable",
+        sizes: ["Standard"],
+        date: 1716634345602,
+        bestseller: true,
+        OnSale: true
+    },
+    {
+        _id: "l-daily-2",
+        name: "HydroComfort Daily Lenses",
+        description: "Moisture-rich daily lenses designed for all-day hydration and comfort.",
+        price: 35,
+        salePrice: 30,
+        image: [f22],
+        category: "LENSES",
+        subCategory: "Daily Disposable",
+        sizes: ["Standard"],
+        date: 1716634345603,
+        bestseller: false,
+        OnSale: false
+    },
+
+    // Monthly Disposable Lenses
+    {
+        _id: "l-monthly-1",
+        name: "OptiView Monthly Contact Lenses",
+        description: "Durable and comfortable monthly lenses for extended wear.",
+        price: 40,
+        salePrice: 35,
+        image: [f3],
+        category: "LENSES",
+        subCategory: "Monthly Disposable",
+        sizes: ["Standard"],
+        date: 1716634345604,
+        bestseller: false,
+        OnSale: false
+    },
+    {
+        _id: "l-monthly-2",
+        name: "ClearVision Monthly Lenses",
+        description: "High-quality monthly lenses offering sharp, long-lasting vision.",
+        price: 45,
+        salePrice: 38,
+        image: [f32],
+        category: "LENSES",
+        subCategory: "Monthly Disposable",
+        sizes: ["Standard"],
+        date: 1716634345605,
+        bestseller: true,
+        OnSale: true
+    },
+
+    // Colored Lenses
+    {
+        _id: "l-colored-1",
+        name: "AquaShine Colored Contact Lenses",
+        description: "Vibrant colored lenses for a fresh, stunning look with UV protection.",
+        price: 50,
+        salePrice: 42,
+        image: [f4],
+        category: "LENSES",
+        subCategory: "Colored Lenses",
+        sizes: ["Standard"],
+        date: 1716634345606,
+        bestseller: true,
+        OnSale: true
+    },
+    {
+        _id: "l-colored-2",
+        name: "Elegance Hazel Colored Lenses",
+        description: "Natural-looking colored lenses available in multiple shades.",
+        price: 55,
+        salePrice: 48,
+        image: [f42],
+        category: "LENSES",
+        subCategory: "Colored Lenses",
+        sizes: ["Standard"],
+        date: 1716634345607,
+        bestseller: false,
+        OnSale: false
+    },
+
+    // Toric (Astigmatism) Lenses
+    {
+        _id: "l-toric-1",
+        name: "StableVision Toric Lenses",
+        description: "Precision-engineered toric lenses for astigmatism correction.",
+        price: 65,
+        salePrice: 58,
+        image: [f5],
+        category: "LENSES",
+        subCategory: "Toric (Astigmatism)",
+        sizes: ["Standard"],
+        date: 1716634345608,
+        bestseller: true,
+        OnSale: true
+    },
+    {
+        _id: "l-toric-2",
+        name: "Astigmo Comfort Toric Lenses",
+        description: "Soft, high-performance toric lenses for stable and clear vision.",
+        price: 70,
+        salePrice: 62,
+        image: [f52],
+        category: "LENSES",
+        subCategory: "Toric (Astigmatism)",
+        sizes: ["Standard"],
+        date: 1716634345609,
+        bestseller: false,
+        OnSale: false
+    },
+
+    // Cases
+    {
+        _id: "a-case-1",
+        name: "Premium Hard Shell Glasses Case",
+        description: "Durable and stylish hard shell case to protect your glasses from scratches and damage.",
+        price: 20,
+        salePrice: 15,
+        image: [g1],
+        category: "ACCESSORIES",
+        subCategory: "Cases",
+        sizes: ["Standard"],
+        date: 1716634345700,
+        bestseller: true,
+        OnSale: true
+    },
+    {
+        _id: "a-case-2",
+        name: "Leather Protective Glasses Case",
+        description: "Elegant leather case with a soft inner lining for extra protection.",
+        price: 25,
+        salePrice: 20,
+        image: [g12],
+        category: "ACCESSORIES",
+        subCategory: "Cases",
+        sizes: ["Standard"],
+        date: 1716634345701,
+        bestseller: false,
+        OnSale: false
+    },
+
+    // Cleaning Kits
+    {
+        _id: "a-cleaning-1",
+        name: "Complete Glasses Cleaning Kit",
+        description: "Includes microfiber cloth, lens cleaner spray, and screwdriver for adjustments.",
+        price: 18,
+        salePrice: 15,
+        image: [g2],
+        category: "ACCESSORIES",
+        subCategory: "Cleaning Kits",
+        sizes: ["Standard"],
+        date: 1716634345702,
+        bestseller: true,
+        OnSale: true
+    },
+    {
+        _id: "a-cleaning-2",
+        name: "Deluxe Lens Cleaning Set",
+        description: "Anti-smudge and anti-static cleaning solution for crystal-clear vision.",
+        price: 22,
+        salePrice: 18,
+        image: [g22],
+        category: "ACCESSORIES",
+        subCategory: "Cleaning Kits",
+        sizes: ["Standard"],
+        date: 1716634345703,
+        bestseller: false,
+        OnSale: false
+    },
+
+    // Lens Wipes
+    {
+        _id: "a-wipes-1",
+        name: "Pre-Moistened Lens Wipes (Pack of 50)",
+        description: "Individually wrapped lens wipes for on-the-go convenience and streak-free cleaning.",
+        price: 12,
+        salePrice: 10,
+        image: [g3],
+        category: "ACCESSORIES",
+        subCategory: "Lens Wipes",
+        sizes: ["Standard"],
+        date: 1716634345704,
+        bestseller: true,
+        OnSale: true
+    },
+    {
+        _id: "a-wipes-2",
+        name: "Anti-Bacterial Lens Wipes (Pack of 100)",
+        description: "Fast-drying, anti-bacterial wipes safe for all lens types, including AR-coated lenses.",
+        price: 20,
+        salePrice: 15,
+        image: [g32],
+        category: "ACCESSORIES",
+        subCategory: "Lens Wipes",
+        sizes: ["Standard"],
+        date: 1716634345705,
+        bestseller: false,
+        OnSale: false
+    },
+
+    // Anti-Fog Solutions
+    {
+        _id: "a-fog-1",
+        name: "Anti-Fog Lens Spray",
+        description: "Prevents fogging on glasses, perfect for masks and humid conditions.",
+        price: 15,
+        salePrice: 12,
+        image: [g4],
+        category: "ACCESSORIES",
+        subCategory: "Anti-Fog Solutions",
+        sizes: ["Standard"],
+        date: 1716634345706,
+        bestseller: true,
+        OnSale: true
+    },
+    {
+        _id: "a-fog-2",
+        name: "Anti-Fog Microfiber Cloth",
+        description: "Reusable microfiber cloth infused with anti-fog treatment for long-lasting clarity.",
+        price: 18,
+        salePrice: 14,
+        image: [g42],
+        category: "ACCESSORIES",
+        subCategory: "Anti-Fog Solutions",
+        sizes: ["Standard"],
+        date: 1716634345707,
+        bestseller: false,
+        OnSale: false
     }
 
 ]

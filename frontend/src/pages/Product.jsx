@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext';
 import { assets } from '../assets/assets';
@@ -64,6 +64,11 @@ const Product = () => {
           </div>
           <p className='mt-5 text-3xl font-medium'>{currency}{productData.price}</p>
           <p className='mt-5 text-gray-500 md:w-4/5'>{productData.description}</p>
+         {/* Try On Button */}
+<button className='flex items-center gap-2 px-8 pt-3 mt-5 text-sm text-black border rounded-md hover:bg-gray-100'>
+  <img src={assets.tryon_icon} alt="Try On" className="w-5 h-5" />
+  Try On
+</button>
           <div className='flex flex-col gap-4 my-8'>
             <p>Select Size</p>
             <div className='flex gap-2'>
@@ -84,6 +89,17 @@ const Product = () => {
           >
             ADD TO CART
           </button>
+{/* Buy on WhatsApp Button - Same Width as "Add to Cart" */}
+<a 
+  href={`https://api.whatsapp.com/send?phone=YOUR_PHONE_NUMBER&text=I'm%20interested%20in%20${productData.name}`} 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className='flex items-center justify-center gap-2 px-8 py-3 mt-3 text-sm text-white bg-green-500 rounded-md hover:bg-green-600'
+  style={{ maxWidth: '160px' }} // Adjust width if needed
+>
+  <img src={assets.whatsapp_icon} alt="WhatsApp" className="w-5 h-5" />
+  Buy on WhatsApp
+</a>
           <hr className='mt-8 sm:w-4/5' />
           <div className='flex flex-col gap-1 mt-5 text-sm text-gray-500'>
             <p>Guaranteed 100% Authentic – Shop with Confidence!</p>
@@ -100,7 +116,7 @@ const Product = () => {
         </div>
         <div className='flex flex-col gap-4 px-6 py-6 text-sm text-gray-500 border'>
           <p>Elevate your style with our meticulously crafted Trendify quality products. Designed with a perfect balance of elegance and practicality, these Trendify quality products made from premium materials that ensure both durability and comfort.</p>
-          <p>Whether you're dressing up for a special occasion or adding a touch of sophistication to your everyday look, the Trendify quality products offer unparalleled versatility. Its timeless design, coupled with a flawless fit, makes it a must-have addition to any wardrobe. Don’t miss out on the chance to own a piece that combines both form and function—experience the difference today.</p>
+          <p>Whether you are dressing up for a special occasion or adding a touch of sophistication to your everyday look, the Trendify quality products offer unparalleled versatility. Its timeless design, coupled with a flawless fit, makes it a must-have addition to any wardrobe. Don’t miss out on the chance to own a piece that combines both form and function—experience the difference today.</p>
         </div>
       </div>
       {/* Display Related Products */}
