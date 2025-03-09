@@ -19,7 +19,8 @@ const OnSale = () => {
         <p className="w-3/4 m-auto text-xs text-gray-600 sm:text-sm md:text-base">
         Discover incredible deals on our top-selling eyewear! 
         Shop our handpicked selection of stylish, 
-        high-quality frames and lenses at unbeatable prices. Limited-time offers—grab your favorites before they are gone!
+        high-quality frames and lenses at unbeatable prices. 
+        Limited-time offers—grab your favorites before they are gone!
         </p>
       </div>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-6">

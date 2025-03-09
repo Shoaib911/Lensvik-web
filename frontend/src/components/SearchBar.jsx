@@ -1,24 +1,18 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import { assets } from '../assets/assets';
-import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const SearchBar = () => {
+
+const SearchBar = ({ alwaysVisible = false }) => {
 
     const {search, setSearch, showSearch, setShowSearch} = useContext(ShopContext);
-    const [visible, setVisible] = useState(false);
-    const location = useLocation();
+    
+// If alwaysVisible is true, ignore showSearch and display it permanently
+if (!alwaysVisible && !showSearch) return null;
 
-    useEffect(() => {
-        if (location.pathname.includes('collection')) {
-            setVisible(true)
-        } else {
-            setVisible(false)
-        }
-    }, [location]);
-
-  return showSearch && visible ? (
-    <div className='text-center border-t border-b bg-gray-50'>
+  return (
+    <div className='text-center border-t'>
         <div className='inline-flex items-center justify-center w-3/4 px-5 py-2 mx-3 my-5 border border-gray-400 rounded-full sm:w-1/2'>
             <input 
                 value={search} 
@@ -28,13 +22,20 @@ const SearchBar = () => {
             />
             <img className='w-4' src={assets.search_icon} alt="Search" />
         </div>
-        <img 
-            onClick={() => setShowSearch(false)} 
-            className='inline w-3 cursor-pointer' 
-            src={assets.cross_icon} alt="Close" 
-        />
+
+        {!alwaysVisible && (
+                <img 
+                    onClick={() => setShowSearch(false)} 
+                    className='inline w-3 cursor-pointer' 
+                    src={assets.cross_icon} alt="Close" 
+                />
+            )}
     </div>
-  ) : null
+  ) 
 }
+
+SearchBar.propTypes = {
+    alwaysVisible: PropTypes.bool
+};
 
 export default SearchBar

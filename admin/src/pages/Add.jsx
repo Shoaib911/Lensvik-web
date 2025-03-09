@@ -88,14 +88,13 @@ const Add = ({ token }) => {
   };
 
   const categories = {
-    "Men Eyeglasses": ["Full Rim", "Half Rim", "Rimless", "Blue Light Blocking", "Progressive Lenses", "Reading Glasses"],
-    "Women Eyeglasses": ["Full Rim", "Half Rim", "Rimless", "Blue Light Blocking", "Progressive Lenses", "Reading Glasses"],
-    "Sunglasses": ["Polarized", "Non-Polarized", "Aviators", "Wayfarer", "Round", "Sports Sunglasses"],
-    "Contact Lenses": ["Daily Disposable", "Monthly Disposable", "Toric (Astigmatism)", "Multifocal", "Colored Lenses"],
-    "Computer & Gaming Glasses": ["Blue Light Filter", "Anti-Glare", "Prescription Gaming Glasses"],
-    "Kids Glasses": ["Prescription Glasses", "Sunglasses", "Blue Light Glasses"],
-    "Sports & Safety Glasses": ["Cycling Glasses", "Running Glasses", "Protective Eyewear"],
-    "Accessories": ["Cases & Covers", "Cleaning Kits", "Lens Wipes", "Anti-Fog Solutions"]
+    "MEN GLASSES": ["Full Rim", "Half Rim", "Rimless", "Blue Light Blocking", "Progressive Lenses", "Reading Glasses"],
+    "WOMEN GLASSES": ["Full Rim", "Half Rim", "Rimless", "Blue Light Blocking", "Progressive Lenses", "Reading Glasses"],
+    "SUNGLASSES": ["Polarized", "Non-Polarized", "Aviators", "Wayfarer", "Round", "Sports Sunglasses"],
+    "LENSES": ["Daily Disposable", "Monthly Disposable", "Toric (Astigmatism)", "Multifocal", "Colored Lenses"],
+    "KIDS GLASSES": ["Prescription", "Sunglasses", "Blue Light Glasses"],
+    "ACCESSORIES": ["Cases & Covers", "Cleaning Kits", "Lens Wipes", "Anti-Fog Solutions"],
+    "INTELLIGENT GLASSES": [ "Smart Lenses", "Blue Light Filter"]
   };
 
   return (

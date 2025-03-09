@@ -53,6 +53,13 @@ import p_img49 from './p_img49.png'
 import p_img50 from './p_img50.png'
 import p_img51 from './p_img51.png'
 import p_img52 from './p_img52.png'
+import accessories from './Accessories.jpg'
+import intelligent_glasses from './Intelligent_glasses.jpg'
+import Kid_Glasses from './Kid_glassess.jpg'
+import lenses from './lenses.jpg'
+import men_glassess from './men_glasses.jpg'
+import women_glassess from './women_glassess.jpg'
+import Sunglasses from './Sunglasses.jpg'
 
 
 import logo from './logo.png'
@@ -98,7 +105,14 @@ export const assets = {
     contact_img,
     razorpay_logo,
     stripe_logo,
-    cross_icon
+    cross_icon,
+    accessories,
+    Sunglasses,
+    women_glassess,
+    men_glassess,
+    lenses,
+    Kid_Glasses,
+    intelligent_glasses
 }
 
 export const products = [
@@ -108,8 +122,8 @@ export const products = [
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 100,
         image: [p_img1],
-        category: "Women",
-        subCategory: "Topwear",
+        category: "MEN GLASSES",
+        subCategory: "Full Rim",
         sizes: ["S", "M", "L"],
         date: 1716634345448,
         bestseller: true,

@@ -1,9 +1,10 @@
-import React from 'react'
+
 import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import Collection from './pages/Collection'
-import About from './pages/About'
 import Contact from './pages/Contact'
+import CategoryPage from "./pages/CategoryPage";
+import SubcategoryPage from "./pages/SubcategoryPage";
 import Product from './pages/Product'
 import Cart from './pages/Cart'
 import Login from './pages/Login'
@@ -12,7 +13,7 @@ import Orders from './pages/Orders'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
@@ -24,8 +25,9 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/collection' element={<Collection />} />
-        <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path="/category/:mainCategory" element={<CategoryPage />} />
+        <Route path="/category/:mainCategory/:subCategory" element={<SubcategoryPage />} />
         <Route path='/product/:productId' element={<Product />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/login' element={<Login />} />

@@ -5,30 +5,32 @@ import { assets } from '../assets/assets';
 const Categories = () => {
     const [hoveredCategory, setHoveredCategory] = useState(null);
 
-    // Desktop categories with subcategories
     const categoriesDesktop = [
-        { name: 'Men Glasses', img: assets.hero_img3, subcategories: ['Full Rim', 'Half Rim', 'Rimless', 'Blue Light'] },
-        { name: 'Women Glasses', img: assets.hero_img3, subcategories: ['Full Rim', 'Half Rim', 'Rimless', 'Progressive'] },
-        { name: 'Kids Glasses', img: assets.hero_img3, subcategories: ['Prescription', 'Sunglasses', 'Blue Light'] },
-        { name: 'Sunglasses', img: assets.hero_img3, subcategories: ['Polarized', 'Non-Polarized', 'Aviators', 'Wayfarer'] },
-        { name: 'Intelligent Glasses', img: assets.hero_img3, subcategories: ['Smart Lenses', 'Blue Light Filter'] },
-        { name: 'Lenses', img: assets.hero_img3, subcategories: ['Daily', 'Monthly', 'Colored', 'Toric'] },
-        { name: 'Accessories', img: assets.hero_img3, subcategories: ['Cases', 'Cleaning Kits', 'Lens Wipes'] }
+        { name: 'MEN GLASSES', subcategories: ['Full Rim', 'Half Rim', 'Rimless', 'Blue Light Blocking','Progressive Lenses','Reading Glasses'] },
+        { name: 'WOMEN GLASSES', subcategories: ['Full Rim', 'Half Rim', 'Rimless', 'Blue Light Blocking','Progressive Lenses','Reading Glasses'] },
+        { name: 'KIDS GLASSES', subcategories: ['Prescription', 'Sunglasses', 'Blue LightGlasses'] },
+        { name: 'SUNGLASSES', subcategories: ['Polarized', 'Non-Polarized', 'Aviators', 'Wayfarer','Rounded','Sports Sunglasses'] },
+        { name: 'INTELLIGENT GLASSES', subcategories: ['Smart Lenses', 'Blue Light Filter'] },
+        { name: 'LENSES', subcategories: ['Multifocal','Daily Disposable', 'Monthly Disposable', 'Colored Lenses', 'Toric (Astigmatism)'] },
+        { name: 'ACCESSORIES', subcategories: ['Cases', 'Cleaning Kits', 'Lens Wipes','Anti-Fog Solutions'] }
     ];
 
     // Mobile categories (simplified)
     const categoriesMobile = [
-        { name: 'Men', img: assets.hero_img3 },
-        { name: 'Women', img: assets.hero_img3 },
-        { name: 'Kids', img: assets.hero_img3 },
-        { name: 'Sunglasses', img: assets.hero_img3 },
-        { name: 'Lenses', img: assets.hero_img3 }
+        { name: 'Men Glasses', img: assets.men_glassess },
+        { name: 'Women Glasses', img: assets.women_glassess },
+        { name: 'Kids Glasses', img: assets.Kid_Glasses },
+        { name: 'Sunglasses', img: assets.Sunglasses },
+        { name: 'Intelligent Glasses', img: assets.intelligent_glasses },
+        { name: 'Lenses', img: assets.lenses },
+        { name: 'Accessories', img: assets.accessories }
+
     ];
 
     return (
-        <div className='py-5'>
-            {/* Mobile View - 5 Squares */}
-            <div className='grid grid-cols-5 gap-2 sm:hidden'>
+        <div className='pb-3'>
+            {/* 📱 Mobile View - Category Boxes */}
+            <div className='grid grid-cols-4 gap-2 sm:hidden'>
                 {categoriesMobile.map((category, index) => (
                     <Link key={index} to={`/category/${category.name.toLowerCase()}`} className='relative group'>
                         <div className='w-full h-20 bg-gray-100 rounded-lg overflow-hidden shadow-md'>
@@ -39,31 +41,33 @@ const Categories = () => {
                 ))}
             </div>
 
-            {/* Desktop View - 7 Cards with Dropdowns */}
-            <div className='hidden sm:flex justify-center gap-12 py-4 relative'>
+            {/* 🖥️ Desktop View - Navbar Style */}
+            <div className='hidden sm:flex justify-center gap-8 py-4 relative'>
                 {categoriesDesktop.map((category, index) => (
                     <div
                         key={index}
-                        className='relative cursor-pointer'
+                        className='relative group cursor-pointer'
                         onMouseEnter={() => setHoveredCategory(index)}
                         onMouseLeave={() => setHoveredCategory(null)}
                     >
-                        {/* Main Category Card */}
-                        <div className='w-35 h-20 rounded-lg overflow-hidden shadow-md relative'>
-                            <img src={category.img} alt={category.name} className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-110' />
-                        </div>
-                        <p className='text-center mt-2 text-m font-semibold'>{category.name}</p>
+                        {/* Main Category Name (Now Clickable) */}
+                        <Link 
+                            to={`/category/${category.name.toLowerCase()}`} 
+                            className='text-sm text-gray-700 font-medium hover:text-black transition-colors block px-3 py-2'
+                        >
+                            {category.name}
+                        </Link>
 
-                        {/* Dropdown for Subcategories (remains visible on hover) */}
+                        {/* Dropdown Menu for Subcategories */}
                         {hoveredCategory === index && (
                             <div 
-                                className='absolute top-full left-1/2 -translate-x-1/2 mt-2 w-52 bg-white shadow-lg rounded-lg pb-4 z-10'
+                                className='absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-white shadow-lg rounded-lg p-5 z-10 border'
                                 onMouseEnter={() => setHoveredCategory(index)} 
                                 onMouseLeave={() => setHoveredCategory(null)}
                             >
-                                <ul className='flex flex-col items-center text-sm text-gray-700'>
+                                <ul className='flex flex-col text-gray-700 text-sm'>
                                     {category.subcategories.map((sub, subIndex) => (
-                                        <li key={subIndex} className='py-1 hover:text-black w-full text-center'>
+                                        <li key={subIndex} className='py-2 px-4 hover:bg-gray-100 hover:text-black text-center rounded-md'>
                                             <Link to={`/category/${category.name.toLowerCase()}/${sub.toLowerCase()}`}>{sub}</Link>
                                         </li>
                                     ))}
