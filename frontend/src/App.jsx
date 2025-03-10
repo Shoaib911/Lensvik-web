@@ -8,6 +8,7 @@ import SubcategoryPage from "./pages/SubcategoryPage";
 import Product from './pages/Product'
 import Cart from './pages/Cart'
 import Login from './pages/Login'
+import Profile from './pages/Profile'
 import PlaceOrder from './pages/PlaceOrder'
 import Orders from './pages/Orders'
 import NavBar from './components/NavBar'
@@ -31,6 +32,7 @@ const App = () => {
         <Route path='/product/:productId' element={<Product />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/profile' element={<Profile />} />
         <Route path='/place-order' element={<PlaceOrder />} />
         <Route path='/orders' element={<Orders />} />
       </Routes>

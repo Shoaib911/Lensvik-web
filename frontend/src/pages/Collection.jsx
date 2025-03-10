@@ -3,6 +3,7 @@ import { ShopContext } from "../context/ShopContext";
 import { assets } from "../assets/assets";
 import Title from "../components/Title";
 import ProductItem from "../components/ProductItem";
+import Categories from "../components/Categories";
 
 const Collection = () => {
   const { products, search, showSearch } = useContext(ShopContext);
@@ -22,6 +23,7 @@ const Collection = () => {
       setFilterState([...filterState, value]);
     }
   };
+  
   const applyFilter = () => {
     let productsCopy = products.slice();
   
@@ -84,6 +86,7 @@ const Collection = () => {
   }, [sortType]);
 
   return (
+    <><Categories/>
     <div className="flex flex-col gap-1 pt-10 border-t sm:flex-row sm:gap-10">
       {/* Filter Options */}
       <div className="min-w-60">
@@ -195,16 +198,20 @@ const Collection = () => {
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 gap-y-6">
           {filterProducts.map((item, index) => (
             <ProductItem
-              key={index}
-              id={item._id}
-              name={item.name}
-              image={item.image}
-              price={item.price}
-            />
+                     key={index}
+                     id={item._id}
+                     image={item.image}
+                     name={item.name}
+                     price={item.price}
+                     salePrice={item.salePrice}
+                     OnSale={item.OnSale}
+                     sizes={item.sizes}
+                   />
           ))}
         </div>
       </div>
     </div>
+    </>
   );
 };
 

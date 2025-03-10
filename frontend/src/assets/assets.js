@@ -61,6 +61,8 @@ import g32 from './g3.2.jpg'
 import g4 from './g4.jpg'
 import g42 from './g4.2.jpg'
 
+import upload_area from "./upload_area.png";
+
 
 import accessories from './Accessories.jpg'
 import intelligent_glasses from './Intelligent_glasses.jpg'
@@ -76,6 +78,7 @@ import hero_img from './hero_img.jpg'
 import hero_img2 from './hero_img2.jpg'
 import hero_img3 from './hero_img3.jpg'
 import try_on from './try_on.jpg'
+import tryon_icon from './try-on.png'
 import cart_icon from './cart_icon.png'
 import bin_icon from './bin_icon.png'
 import dropdown_icon from './dropdown_icon.png'
@@ -92,8 +95,10 @@ import contact_img from './contact_img.png'
 import razorpay_logo from './razorpay_logo.png'
 import stripe_logo from './stripe_logo.png'
 import cross_icon from './cross_icon.png'
+import whatsapp from './whatsapp.png'
 
 export const assets = {
+    upload_area,
     logo,
     hero_img,
     hero_img2,
@@ -121,7 +126,9 @@ export const assets = {
     men_glassess,
     lenses,
     Kid_Glasses,
-    intelligent_glasses
+    intelligent_glasses,
+    whatsapp,
+    tryon_icon
 }
 
 export const products=[
@@ -138,7 +145,21 @@ export const products=[
         sizes: ["S", "M", "L"],
         date: 1716634345448,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-fullrim-2",
@@ -152,7 +173,21 @@ export const products=[
         sizes: ["S", "M", "L"],
         date: 1716634345449,
         bestseller: false,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-fullrim-3",
@@ -166,7 +201,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345450,
         bestseller: true,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Half Rim
@@ -182,7 +231,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345451,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-halfrim-2",
@@ -196,7 +259,21 @@ export const products=[
         sizes: ["S", "M", "L"],
         date: 1716634345452,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-halfrim-3",
@@ -210,7 +287,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345453,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Rimless
@@ -226,7 +317,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345454,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-rimless-2",
@@ -240,7 +345,21 @@ export const products=[
         sizes: ["S", "M"],
         date: 1716634345455,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-rimless-3",
@@ -254,7 +373,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345456,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Blue Light Blocking
@@ -270,7 +403,21 @@ export const products=[
         sizes: ["S", "M", "L"],
         date: 1716634345457,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-blue-2",
@@ -284,7 +431,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345458,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-blue-3",
@@ -298,7 +459,21 @@ export const products=[
         sizes: ["S", "M", "L"],
         date: 1716634345459,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Progressive Lenses
@@ -314,7 +489,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345460,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-progressive-2",
@@ -328,7 +517,21 @@ export const products=[
         sizes: ["S", "M"],
         date: 1716634345461,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-progressive-3",
@@ -342,7 +545,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345462,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
         // Reading Glasses
@@ -358,7 +575,21 @@ export const products=[
             sizes: ["S", "M", "L"],
             date: 1716634345463,
             bestseller: true,
-            OnSale: true
+            OnSale: true,
+            reviews: [
+                {
+                    name: "John Doe",
+                    rating: 5,
+                    comment: "Amazing glasses! Very comfortable.",
+                    images: [a1, a2]
+                },
+                {
+                    name: "Jane Smith",
+                    rating: 4,
+                    comment: "Great quality but slightly heavy.",
+                    images: [a3]
+                }
+            ]
         },
         {
             _id: "m-reading-2",
@@ -372,7 +603,21 @@ export const products=[
             sizes: ["M", "L"],
             date: 1716634345464,
             bestseller: false,
-            OnSale: false
+            OnSale: false,
+            reviews: [
+                {
+                    name: "John Doe",
+                    rating: 5,
+                    comment: "Amazing glasses! Very comfortable.",
+                    images: [a1, a2]
+                },
+                {
+                    name: "Jane Smith",
+                    rating: 4,
+                    comment: "Great quality but slightly heavy.",
+                    images: [a3]
+                }
+            ]
         },
         {
             _id: "m-reading-3",
@@ -386,7 +631,21 @@ export const products=[
             sizes: ["S", "M", "L"],
             date: 1716634345465,
             bestseller: true,
-            OnSale: true
+            OnSale: true,
+            reviews: [
+                {
+                    name: "John Doe",
+                    rating: 5,
+                    comment: "Amazing glasses! Very comfortable.",
+                    images: [a1, a2]
+                },
+                {
+                    name: "Jane Smith",
+                    rating: 4,
+                    comment: "Great quality but slightly heavy.",
+                    images: [a3]
+                }
+            ]
         },
  
         //Women
@@ -403,7 +662,21 @@ export const products=[
         sizes: ["S", "M", "L"],
         date: 1716634345448,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-fullrim-2",
@@ -417,7 +690,21 @@ export const products=[
         sizes: ["S", "M", "L"],
         date: 1716634345449,
         bestseller: false,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-fullrim-3",
@@ -431,7 +718,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345450,
         bestseller: true,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Half Rim
@@ -447,7 +748,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345451,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-halfrim-2",
@@ -461,7 +776,21 @@ export const products=[
         sizes: ["S", "M", "L"],
         date: 1716634345452,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-halfrim-3",
@@ -475,7 +804,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345453,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Rimless
@@ -491,7 +834,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345454,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-rimless-2",
@@ -505,7 +862,21 @@ export const products=[
         sizes: ["S", "M"],
         date: 1716634345455,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-rimless-3",
@@ -519,7 +890,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345456,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Blue Light Blocking
@@ -535,7 +920,21 @@ export const products=[
         sizes: ["S", "M", "L"],
         date: 1716634345457,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-blue-2",
@@ -549,7 +948,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345458,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-blue-3",
@@ -563,7 +976,21 @@ export const products=[
         sizes: ["S", "M", "L"],
         date: 1716634345459,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Progressive Lenses
@@ -579,7 +1006,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345460,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-progressive-2",
@@ -593,7 +1034,21 @@ export const products=[
         sizes: ["S", "M"],
         date: 1716634345461,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "m-progressive-3",
@@ -607,7 +1062,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345462,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
         // Reading Glasses
@@ -623,7 +1092,21 @@ export const products=[
             sizes: ["S", "M", "L"],
             date: 1716634345463,
             bestseller: true,
-            OnSale: true
+            OnSale: true,
+            reviews: [
+                {
+                    name: "John Doe",
+                    rating: 5,
+                    comment: "Amazing glasses! Very comfortable.",
+                    images: [a1, a2]
+                },
+                {
+                    name: "Jane Smith",
+                    rating: 4,
+                    comment: "Great quality but slightly heavy.",
+                    images: [a3]
+                }
+            ]
         },
         {
             _id: "m-reading-2",
@@ -637,7 +1120,21 @@ export const products=[
             sizes: ["M", "L"],
             date: 1716634345464,
             bestseller: false,
-            OnSale: false
+            OnSale: false,
+            reviews: [
+                {
+                    name: "John Doe",
+                    rating: 5,
+                    comment: "Amazing glasses! Very comfortable.",
+                    images: [a1, a2]
+                },
+                {
+                    name: "Jane Smith",
+                    rating: 4,
+                    comment: "Great quality but slightly heavy.",
+                    images: [a3]
+                }
+            ]
         },
         {
             _id: "m-reading-3",
@@ -651,7 +1148,21 @@ export const products=[
             sizes: ["S", "M", "L"],
             date: 1716634345465,
             bestseller: true,
-            OnSale: true
+            OnSale: true,
+            reviews: [
+                {
+                    name: "John Doe",
+                    rating: 5,
+                    comment: "Amazing glasses! Very comfortable.",
+                    images: [a1, a2]
+                },
+                {
+                    name: "Jane Smith",
+                    rating: 4,
+                    comment: "Great quality but slightly heavy.",
+                    images: [a3]
+                }
+            ]
         },
 
 
@@ -667,7 +1178,21 @@ export const products=[
             sizes: ["S", "M"],
             date: 1716634345466,
             bestseller: true,
-            OnSale: true
+            OnSale: true,
+            reviews: [
+                {
+                    name: "John Doe",
+                    rating: 5,
+                    comment: "Amazing glasses! Very comfortable.",
+                    images: [a1, a2]
+                },
+                {
+                    name: "Jane Smith",
+                    rating: 4,
+                    comment: "Great quality but slightly heavy.",
+                    images: [a3]
+                }
+            ]
         },
         {
             _id: "k-prescription-2",
@@ -681,7 +1206,21 @@ export const products=[
             sizes: ["S", "M", "L"],
             date: 1716634345467,
             bestseller: false,
-            OnSale: false
+            OnSale: false,
+            reviews: [
+                {
+                    name: "John Doe",
+                    rating: 5,
+                    comment: "Amazing glasses! Very comfortable.",
+                    images: [a1, a2]
+                },
+                {
+                    name: "Jane Smith",
+                    rating: 4,
+                    comment: "Great quality but slightly heavy.",
+                    images: [a3]
+                }
+            ]
         },
         {
             _id: "k-prescription-3",
@@ -695,7 +1234,21 @@ export const products=[
             sizes: ["S", "M"],
             date: 1716634345468,
             bestseller: true,
-            OnSale: true
+            OnSale: true,
+            reviews: [
+                {
+                    name: "John Doe",
+                    rating: 5,
+                    comment: "Amazing glasses! Very comfortable.",
+                    images: [a1, a2]
+                },
+                {
+                    name: "Jane Smith",
+                    rating: 4,
+                    comment: "Great quality but slightly heavy.",
+                    images: [a3]
+                }
+            ]
         },
     
         // Kids Sunglasses
@@ -711,7 +1264,21 @@ export const products=[
             sizes: ["M", "L"],
             date: 1716634345469,
             bestseller: true,
-            OnSale: true
+            OnSale: true,
+            reviews: [
+                {
+                    name: "John Doe",
+                    rating: 5,
+                    comment: "Amazing glasses! Very comfortable.",
+                    images: [a1, a2]
+                },
+                {
+                    name: "Jane Smith",
+                    rating: 4,
+                    comment: "Great quality but slightly heavy.",
+                    images: [a3]
+                }
+            ]
         },
         {
             _id: "k-sunglasses-2",
@@ -725,7 +1292,21 @@ export const products=[
             sizes: ["S", "M"],
             date: 1716634345470,
             bestseller: false,
-            OnSale: false
+            OnSale: false,
+            reviews: [
+                {
+                    name: "John Doe",
+                    rating: 5,
+                    comment: "Amazing glasses! Very comfortable.",
+                    images: [a1, a2]
+                },
+                {
+                    name: "Jane Smith",
+                    rating: 4,
+                    comment: "Great quality but slightly heavy.",
+                    images: [a3]
+                }
+            ]
         },
         {
             _id: "k-sunglasses-3",
@@ -739,7 +1320,21 @@ export const products=[
             sizes: ["S", "M"],
             date: 1716634345471,
             bestseller: true,
-            OnSale: true
+            OnSale: true,
+            reviews: [
+                {
+                    name: "John Doe",
+                    rating: 5,
+                    comment: "Amazing glasses! Very comfortable.",
+                    images: [a1, a2]
+                },
+                {
+                    name: "Jane Smith",
+                    rating: 4,
+                    comment: "Great quality but slightly heavy.",
+                    images: [a3]
+                }
+            ]
         },
     
         // Kids Blue Light Glasses
@@ -755,7 +1350,21 @@ export const products=[
             sizes: ["S", "M", "L"],
             date: 1716634345472,
             bestseller: true,
-            OnSale: true
+            OnSale: true,
+            reviews: [
+                {
+                    name: "John Doe",
+                    rating: 5,
+                    comment: "Amazing glasses! Very comfortable.",
+                    images: [a1, a2]
+                },
+                {
+                    name: "Jane Smith",
+                    rating: 4,
+                    comment: "Great quality but slightly heavy.",
+                    images: [a3]
+                }
+            ]
         },
         {
             _id: "k-blue-2",
@@ -769,7 +1378,21 @@ export const products=[
             sizes: ["S", "M"],
             date: 1716634345473,
             bestseller: false,
-            OnSale: false
+            OnSale: false,
+            reviews: [
+                {
+                    name: "John Doe",
+                    rating: 5,
+                    comment: "Amazing glasses! Very comfortable.",
+                    images: [a1, a2]
+                },
+                {
+                    name: "Jane Smith",
+                    rating: 4,
+                    comment: "Great quality but slightly heavy.",
+                    images: [a3]
+                }
+            ]
         },
         {
             _id: "k-blue-3",
@@ -783,7 +1406,21 @@ export const products=[
             sizes: ["S", "M", "L"],
             date: 1716634345474,
             bestseller: true,
-            OnSale: true
+            OnSale: true,
+            reviews: [
+                {
+                    name: "John Doe",
+                    rating: 5,
+                    comment: "Amazing glasses! Very comfortable.",
+                    images: [a1, a2]
+                },
+                {
+                    name: "Jane Smith",
+                    rating: 4,
+                    comment: "Great quality but slightly heavy.",
+                    images: [a3]
+                }
+            ]
         },
 
         // Polarized Sunglasses
@@ -799,7 +1436,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345475,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "s-polarized-2",
@@ -813,7 +1464,21 @@ export const products=[
         sizes: ["S", "M"],
         date: 1716634345476,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "s-polarized-3",
@@ -827,7 +1492,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345477,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Non-Polarized Sunglasses
@@ -843,7 +1522,21 @@ export const products=[
         sizes: ["S", "M"],
         date: 1716634345478,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "s-nonpolarized-2",
@@ -857,7 +1550,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345479,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "s-nonpolarized-3",
@@ -871,7 +1578,21 @@ export const products=[
         sizes: ["S", "M", "L"],
         date: 1716634345480,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Aviators
@@ -887,7 +1608,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345481,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "s-aviator-2",
@@ -901,7 +1636,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345482,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "s-aviator-3",
@@ -915,7 +1664,21 @@ export const products=[
         sizes: ["S", "M", "L"],
         date: 1716634345483,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Wayfarer
@@ -931,7 +1694,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345484,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "s-wayfarer-2",
@@ -945,7 +1722,21 @@ export const products=[
         sizes: ["S", "M"],
         date: 1716634345485,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "s-wayfarer-3",
@@ -959,7 +1750,21 @@ export const products=[
         sizes: ["S", "M", "L"],
         date: 1716634345486,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Rounded Sunglasses
@@ -975,7 +1780,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345487,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "s-rounded-2",
@@ -989,7 +1808,21 @@ export const products=[
         sizes: ["S", "M"],
         date: 1716634345488,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "s-rounded-3",
@@ -1003,7 +1836,21 @@ export const products=[
         sizes: ["S", "M", "L"],
         date: 1716634345489,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Sports Sunglasses
@@ -1019,7 +1866,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345490,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "s-sports-2",
@@ -1033,7 +1894,21 @@ export const products=[
         sizes: ["S", "M"],
         date: 1716634345491,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "s-sports-3",
@@ -1047,7 +1922,21 @@ export const products=[
         sizes: ["S", "M", "L"],
         date: 1716634345492,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Smart Lenses
@@ -1063,7 +1952,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345500,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "i-smart-2",
@@ -1077,7 +1980,21 @@ export const products=[
         sizes: ["S", "M"],
         date: 1716634345501,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "i-smart-3",
@@ -1091,7 +2008,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345502,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Blue Light Filter Glasses
@@ -1107,7 +2038,21 @@ export const products=[
         sizes: ["S", "M", "L"],
         date: 1716634345503,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "i-blue-2",
@@ -1121,7 +2066,21 @@ export const products=[
         sizes: ["M", "L"],
         date: 1716634345504,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "i-blue-3",
@@ -1135,7 +2094,21 @@ export const products=[
         sizes: ["S", "M"],
         date: 1716634345505,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
      // Multifocal Lenses
@@ -1151,7 +2124,21 @@ export const products=[
         sizes: ["Standard"],
         date: 1716634345600,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "l-multi-2",
@@ -1165,7 +2152,21 @@ export const products=[
         sizes: ["Standard"],
         date: 1716634345601,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Daily Disposable Lenses
@@ -1181,7 +2182,21 @@ export const products=[
         sizes: ["Standard"],
         date: 1716634345602,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "l-daily-2",
@@ -1195,7 +2210,21 @@ export const products=[
         sizes: ["Standard"],
         date: 1716634345603,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Monthly Disposable Lenses
@@ -1211,7 +2240,21 @@ export const products=[
         sizes: ["Standard"],
         date: 1716634345604,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "l-monthly-2",
@@ -1225,7 +2268,21 @@ export const products=[
         sizes: ["Standard"],
         date: 1716634345605,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Colored Lenses
@@ -1241,7 +2298,21 @@ export const products=[
         sizes: ["Standard"],
         date: 1716634345606,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "l-colored-2",
@@ -1255,7 +2326,21 @@ export const products=[
         sizes: ["Standard"],
         date: 1716634345607,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Toric (Astigmatism) Lenses
@@ -1271,7 +2356,21 @@ export const products=[
         sizes: ["Standard"],
         date: 1716634345608,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "l-toric-2",
@@ -1285,7 +2384,21 @@ export const products=[
         sizes: ["Standard"],
         date: 1716634345609,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Cases
@@ -1301,7 +2414,21 @@ export const products=[
         sizes: ["Standard"],
         date: 1716634345700,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "a-case-2",
@@ -1315,7 +2442,21 @@ export const products=[
         sizes: ["Standard"],
         date: 1716634345701,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Cleaning Kits
@@ -1331,7 +2472,21 @@ export const products=[
         sizes: ["Standard"],
         date: 1716634345702,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "a-cleaning-2",
@@ -1345,7 +2500,21 @@ export const products=[
         sizes: ["Standard"],
         date: 1716634345703,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Lens Wipes
@@ -1361,7 +2530,21 @@ export const products=[
         sizes: ["Standard"],
         date: 1716634345704,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "a-wipes-2",
@@ -1375,7 +2558,21 @@ export const products=[
         sizes: ["Standard"],
         date: 1716634345705,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
 
     // Anti-Fog Solutions
@@ -1391,7 +2588,21 @@ export const products=[
         sizes: ["Standard"],
         date: 1716634345706,
         bestseller: true,
-        OnSale: true
+        OnSale: true,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     },
     {
         _id: "a-fog-2",
@@ -1405,7 +2616,21 @@ export const products=[
         sizes: ["Standard"],
         date: 1716634345707,
         bestseller: false,
-        OnSale: false
+        OnSale: false,
+        reviews: [
+            {
+                name: "John Doe",
+                rating: 5,
+                comment: "Amazing glasses! Very comfortable.",
+                images: [a1, a2]
+            },
+            {
+                name: "Jane Smith",
+                rating: 4,
+                comment: "Great quality but slightly heavy.",
+                images: [a3]
+            }
+        ]
     }
 
 ]

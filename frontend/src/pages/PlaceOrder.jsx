@@ -3,11 +3,27 @@ import Title from '../components/Title'
 import CartTotal from '../components/CartTotal'
 import { assets } from '../assets/assets'
 import { ShopContext } from '../context/ShopContext'
+import { useNavigate } from 'react-router-dom';
 
 const PlaceOrder = () => {
 
   const [method, setMethod] = useState('cod');
-  const {navigate} = useContext(ShopContext);
+ // const {navigate} = useContext(ShopContext);
+ const navigate = useNavigate();
+ const { placeOrder } = useContext(ShopContext);
+
+  // Check if user is logged in
+  const isLoggedIn = !!localStorage.getItem("user");
+
+  const handlePlaceOrder = () => {
+    if (!isLoggedIn) {
+      localStorage.setItem("redirectAfterLogin", "/orders");
+      navigate("/login");
+    } else {
+      placeOrder(navigate);  // Pass `navigate` as a parameter
+    }
+  };
+  
   
   return (
     <div className='flex flex-col justify-between gap-4 pt-5 sm:flex-row sm:pt-14 min-h-[80vh] border-t'>
@@ -91,7 +107,9 @@ const PlaceOrder = () => {
             </div>
           </div>
           <div className='w-full mt-8 text-end'>
-            <button onClick={() => navigate('/orders')} className='px-16 py-3 text-sm text-white bg-black active:bg-gray-800'>PLACE ORDER</button>
+            <button onClick={handlePlaceOrder} className='px-16 py-3 text-sm text-white bg-black active:bg-gray-800'>
+              PLACE ORDER
+            </button>
           </div>
         </div>
       </div>

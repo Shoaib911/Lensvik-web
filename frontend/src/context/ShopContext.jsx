@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { products } from "../assets/assets";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export const ShopContext = createContext();
 
@@ -10,6 +11,7 @@ const ShopContextProvider = (props) => {
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState({});
   const navigate = useNavigate();
+  const [orders, setOrders] = useState([]);
 
   const currency = "$";
   const delivery_fee = 10;
@@ -59,7 +61,7 @@ const ShopContextProvider = (props) => {
           if (cartItems[items][item] > 0) {
             totalCount += cartItems[items][item];
           }
-        } catch (error) {
+        } catch {
           // INFO: Error Handling
         }
       }
@@ -67,18 +69,40 @@ const ShopContextProvider = (props) => {
     return totalCount;
   };
 
+  const placeOrder = (navigate) => {
+    console.log("Order placed!");
+    if (Object.keys(cartItems).length === 0) {
+      toast.error("Your cart is empty!");
+      return;
+    }
+  
+    const newOrder = {
+      id: Date.now(), // Unique order ID
+      items: cartItems,
+      totalAmount: getCartAmount() + delivery_fee,
+      date: new Date().toLocaleDateString(),
+      status: "Processing",
+    };
+  
+    setOrders((prevOrders) => [newOrder, ...prevOrders]);
+    setCartItems({}); // Clear cart after placing order
+    toast.success("Order placed successfully!");
+  
+    // Redirect to orders page after placing the order
+    navigate("/orders");
+  };
+
+
   const updateQuantity = async (itemId, size, quantity) => {
     if (quantity === 0) {
-      const productData = products.find((product) => product._id === itemId);
       toast.success("Item Removed From The Cart");
     }
-
+  
     let cartData = structuredClone(cartItems);
-
     cartData[itemId][size] = quantity;
-
     setCartItems(cartData);
   };
+  
 
   const getCartAmount = () => {
     let totalAmount = 0;
@@ -89,7 +113,9 @@ const ShopContextProvider = (props) => {
           if (cartItems[items][item] > 0) {
             totalAmount += itemInfo.price * cartItems[items][item];
           }
-        } catch (error) {}
+        } catch (error) {
+          console.error("Error in getCartAmount:", error);
+        }
       }
     }
     return totalAmount;
@@ -109,11 +135,16 @@ const ShopContextProvider = (props) => {
     updateQuantity,
     getCartAmount,
     navigate,
+    orders,
+    placeOrder,
+    setOrders,
   };
 
   return (
     <ShopContext.Provider value={value}>{props.children}</ShopContext.Provider>
   );
 };
-
+ShopContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 export default ShopContextProvider;
