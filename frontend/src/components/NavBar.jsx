@@ -5,6 +5,7 @@ import { ShopContext } from '../context/ShopContext';
 import { useLocation } from 'react-router-dom';
 import SearchBar from './SearchBar.jsx';
 
+
 const NavBar = () => {
     const [visible, setVisible] = useState(false);
     const [expandedCategory, setExpandedCategory] = useState(null); 
@@ -80,6 +81,7 @@ const NavBar = () => {
                         <p>CONTACT</p>
                         <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
                     </NavLink>
+                    
                 </ul>
                 <div className='flex items-center gap-6'>
                     <img 
