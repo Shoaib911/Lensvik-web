@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { backendUrl } from "../backendUrl";
 
 const Login = () => {
   const [currentState, setCurrentState] = useState("Login");
@@ -7,26 +8,52 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = useNavigate(); // Initialize navigate function
+  const navigate = useNavigate();
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
 
-    if (currentState === "Sign Up") {
-      // Simulate user registration
-      const userData = { name, email, password };
-      localStorage.setItem("user", JSON.stringify(userData));
-      alert("Registration successful! You can now log in.");
-      setCurrentState("Login"); // Switch to login mode after sign-up
-    } else {
-      // Simulate login by checking stored data
-      const storedUser = JSON.parse(localStorage.getItem("user"));
-      if (storedUser && storedUser.email === email && storedUser.password === password) {
-        alert("Login successful! Welcome back, " + storedUser.name);
-        navigate("/orders"); // Redirect to Orders Page after login
+    try {
+      if (currentState === "Sign Up") {
+        const response = await fetch(`${backendUrl}/api/user/register`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, email, password }),
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          localStorage.setItem("user", JSON.stringify({ token: data.token }));
+          alert("Registration successful! Please login now.");
+          setCurrentState("Login"); // Switch to Login mode after successful sign-up
+        } else {
+          alert(data.message || "Registration failed. Try again.");
+        }
       } else {
-        alert("Invalid email or password. Please try again.");
+        const response = await fetch(`${backendUrl}/api/user/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          localStorage.setItem("user", JSON.stringify({ token: data.token }));
+          alert("Login successful!");
+          navigate("/orders"); // Redirect to Orders page after login
+        } else {
+          alert(data.message || "Login failed. Try again.");
+        }
       }
+    } catch (error) {
+      console.error("Auth Error:", error);
+      alert("Something went wrong. Please try again.");
     }
   };
 

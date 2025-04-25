@@ -10,11 +10,11 @@ const addProduct = async (req, res) => {
       originalPrice,
       salePrice,
       onSale,
-      category,
-      subCategory,
+      categories, // structured categories data
       brand,
       sizes,
       bestSeller,
+      processedImage, // 👈 new field (optional)
     } = req.body;
 
     const image1 = req.files.image1 && req.files.image1[0];
@@ -22,10 +22,12 @@ const addProduct = async (req, res) => {
     const image3 = req.files.image3 && req.files.image3[0];
     const image4 = req.files.image4 && req.files.image4[0];
 
-    // Ensure category is stored as an array
-    const categories = Array.isArray(category) ? category : JSON.parse(category);
+    const categoriesData = JSON.parse(categories);
 
-    // Convert price values to Number and validate
+    if (!categoriesData || categoriesData.length === 0) {
+      return res.status(400).json({ success: false, message: "At least one category must be selected" });
+    }
+
     const originalPriceNum = Number(originalPrice);
     const salePriceNum = salePrice ? Number(salePrice) : null;
 
@@ -33,14 +35,11 @@ const addProduct = async (req, res) => {
       return res.status(400).json({ success: false, message: "Price must be a valid number" });
     }
 
-    // Validate Sale Price Logic
     if (onSale === "true" && (!salePriceNum || salePriceNum >= originalPriceNum)) {
       return res.status(400).json({ success: false, message: "Invalid sale price. It must be less than the original price." });
     }
 
-    const productImages = [image1, image2, image3, image4].filter(
-      (image) => image !== undefined
-    );
+    const productImages = [image1, image2, image3, image4].filter((image) => image !== undefined);
 
     let imageUrls = await Promise.all(
       productImages.map(async (image) => {
@@ -51,19 +50,27 @@ const addProduct = async (req, res) => {
       })
     );
 
+    let processedImageUrl = null;
+    if (processedImage) {
+      const uploadResponse = await cloudinary.uploader.upload(processedImage, {
+        resource_type: "image",
+        folder: "tryon_images", // optional, you can store it in a special folder
+      });
+      processedImageUrl = uploadResponse.secure_url;
+    }
+
     const productData = {
       name,
       description,
       originalPrice: originalPriceNum,
       salePrice: onSale === "true" ? salePriceNum : null,
       onSale: onSale === "true",
-      category: categories,
-      subCategory,
-      brand,
-      brand: brand || null, // If brand is not provided, set to null
+      categories: categoriesData,
+      brand: brand || null,
       sizes: JSON.parse(sizes),
-      bestSeller: bestSeller === "true" ? true : false,
+      bestSeller: bestSeller === "true",
       image: imageUrls,
+      processedTryonImage: processedImageUrl, // 👈 save separately
       date: Date.now(),
     };
 
@@ -76,6 +83,7 @@ const addProduct = async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
+
 
 // INFO: Route for fetching all products
 const listProducts = async (req, res) => {
@@ -112,4 +120,34 @@ const getSingleProduct = async (req, res) => {
   }
 };
 
-export { addProduct, listProducts, removeProduct, getSingleProduct };
+const updateProduct = async (req, res) => {
+  try {
+    const { productId, name, originalPrice, onSale, salePrice, categories,processedTryonImage } = req.body;
+
+    if (!productId) {
+      return res.status(400).json({ success: false, message: "Product ID is required." });
+    }
+
+    const updatedData = {
+      name,
+      originalPrice,
+      onSale,
+      salePrice: onSale ? salePrice : null,
+      categories,
+    };
+
+    if (processedTryonImage) {
+      updatedData.processedTryonImage = processedTryonImage;
+    }
+    
+    await productModel.findByIdAndUpdate(productId, updatedData);
+
+    res.status(200).json({ success: true, message: "Product updated successfully." });
+  } catch (error) {
+    console.error("Error while updating product:", error);
+    res.status(500).json({ success: false, message: "Failed to update product." });
+  }
+};
+
+
+export { addProduct, listProducts, removeProduct, getSingleProduct,updateProduct };
