@@ -5,7 +5,7 @@ import { backendUrl } from "../App";
 import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 
-const Add = ({ token }) => {
+const Add = ({token}) => {
   const [image1, setImage1] = useState(null);
   const [image2, setImage2] = useState(null);
   const [image3, setImage3] = useState(null);
@@ -78,8 +78,8 @@ const [processingError, setProcessingError] = useState(null);
         { 
           headers: {
             "Content-Type": "multipart/form-data",
-            token,
-          }, 
+            Authorization: `Bearer ${token}`, // ✅ CORRECT
+          },
         }
       );
 
@@ -430,18 +430,21 @@ const [processingError, setProcessingError] = useState(null);
                 </div>
                 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                  {categories[category].map(subcategory => (
-                    <div key={subcategory} className="flex items-center">
-                      <input
-                        type="checkbox"
-                        id={`${category}-${subcategory}`}
-                        checked={categorySubcategories[category]?.includes(subcategory) || false}
-                        onChange={(e) => handleSubcategoryChange(category, subcategory, e.target.checked)}
-                        className="mr-2"
-                      />
-                      <label htmlFor={`${category}-${subcategory}`}>{subcategory}</label>
-                    </div>
-                  ))}
+                {(categories[category] || []).map(subcategory => (
+  <div key={subcategory} className="flex items-center">
+    <input
+      type="checkbox"
+      id={`${category.replace(/\s+/g, "_")}-${subcategory.replace(/\s+/g, "_")}`}
+      checked={categorySubcategories[category]?.includes(subcategory) || false}
+      onChange={(e) => handleSubcategoryChange(category, subcategory, e.target.checked)}
+      className="mr-2"
+    />
+    <label htmlFor={`${category.replace(/\s+/g, "_")}-${subcategory.replace(/\s+/g, "_")}`}>
+      {subcategory}
+    </label>
+  </div>
+))}
+
                 </div>
               </div>
             ))}

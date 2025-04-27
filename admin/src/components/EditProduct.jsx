@@ -4,7 +4,7 @@ import { backendUrl } from "../App";
 import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 
-const EditProduct = ({ token, productData, onClose, onUpdated }) => {
+const EditProduct = ({ token,productData, onClose, onUpdated }) => {
   const [name, setName] = useState("");
   const [originalPrice, setOriginalPrice] = useState(0);
   const [onSale, setOnSale] = useState(false);
@@ -66,7 +66,10 @@ const EditProduct = ({ token, productData, onClose, onUpdated }) => {
       const response = await axios.post(
         `${backendUrl}/api/product/update`,
         updatedData,
-        { headers: { token } }
+        {  headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },}
       );
 
       if (response.data.success) {

@@ -6,7 +6,7 @@ import { Trash2, Edit, Search } from "lucide-react";
 import PropTypes from "prop-types";
 import EditProduct from "../components/EditProduct";
 
-const List = ({ token }) => {
+const List = ({token}) => {
   const [listProducts, setListProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [editingProduct, setEditingProduct] = useState(null);
@@ -34,7 +34,7 @@ const List = ({ token }) => {
       const response = await axios.post(
         `${backendUrl}/api/product/remove`,
         { id },
-        { headers: { token } }
+        { headers: { Authorization: `Bearer ${token}` } }
       );
 
       if (response.data.success) {
@@ -188,15 +188,16 @@ const List = ({ token }) => {
     <div className="bg-white rounded-lg w-full max-w-3xl max-h-[80vh] flex flex-col">
       {/* Scrollable Content */}
       <div className="overflow-y-auto p-6 flex-1">
-        <EditProduct
-          token={token}
-          productData={editingProduct}
-          onClose={() => setShowEditModal(false)}
-          onUpdated={() => {
-            fetchListProducts();
-            setShowEditModal(false);
-          }}
-        />
+      <EditProduct
+  token={token} // ✅ ADD THIS!
+  productData={editingProduct}
+  onClose={() => setShowEditModal(false)}
+  onUpdated={() => {
+    fetchListProducts();
+    setShowEditModal(false);
+  }}
+/>
+
       </div>
     </div>
   </div>
