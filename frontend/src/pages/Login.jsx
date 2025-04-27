@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { backendUrl } from "../backendUrl";
 
@@ -10,6 +12,16 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const showLoginToast = localStorage.getItem("showLoginToast");
+  
+    if (showLoginToast) {
+      toast.info("Please login to place your order"); // ✅ Show Toast
+      localStorage.removeItem("showLoginToast"); // ✅ Remove flag
+    }
+  }, []);
+
+  
   const onSubmitHandler = async (event) => {
     event.preventDefault();
 
@@ -50,14 +62,22 @@ const Login = () => {
         if (data.success) {
           localStorage.setItem("user", JSON.stringify({
             token: data.token,
-            name: data.user.name,   // 👈 important: get from server
+            name: data.user.name,
             email: data.user.email
           }));
+        
           alert("Login successful!");
-          navigate("/orders"); // Redirect to Orders page after login
-        } else {
-          alert(data.message || "Login failed. Try again.");
-        }
+        
+          const redirectAfterLogin = localStorage.getItem("redirectAfterLogin");
+        
+          if (redirectAfterLogin === "placeOrderPending") {
+            localStorage.removeItem("redirectAfterLogin");
+            navigate("/place-order"); // 👈 Redirect back to place order
+          } else {
+            navigate("/orders"); // Normal flow
+          }
+        } 
+        
       }
     } catch (error) {
       console.error("Auth Error:", error);

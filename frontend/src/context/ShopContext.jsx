@@ -141,16 +141,33 @@ const ShopContextProvider = (props) => {
   
       const paymentMethod = localStorage.getItem("paymentMethod") || "cod";
   
-      const response = await axios.post(`${backendUrl}/api/orders`, {
-        items: cartItems,
-        shippingAddress,
-        paymentMethod,
-        totalAmount: getCartAmount() + delivery_fee,
-      }, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      // 🔥 Clean cart items before placing order
+const cleanedCartItems = {};
+
+for (const productId in cartItems) {
+  const sizes = cartItems[productId];
+  const cleanedSizes = {};
+
+  for (const size in sizes) {
+    if (sizes[size] > 0) {
+      cleanedSizes[size] = sizes[size];
+    }
+  }
+
+  if (Object.keys(cleanedSizes).length > 0) {
+    cleanedCartItems[productId] = cleanedSizes;
+  }
+}
+
+const response = await axios.post(`${backendUrl}/api/orders`, {
+  items: cleanedCartItems,
+  shippingAddress,
+  paymentMethod,
+  totalAmount: getCartAmount() + delivery_fee,
+}, {
+  headers: { Authorization: `Bearer ${token}` },
+});
+
   
       if (response.data.success) {
         setCartItems({});

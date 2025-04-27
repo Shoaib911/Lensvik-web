@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import Title from '../components/Title';
 import CartTotal from '../components/CartTotal';
 import { assets } from '../assets/assets';
@@ -24,6 +24,31 @@ const PlaceOrder = () => {
   // Check if user is logged in
   const isLoggedIn = !!localStorage.getItem("user");
 
+  // 🛠 NEW: Restore form fields if saved
+  useEffect(() => {
+    const savedAddress = JSON.parse(localStorage.getItem("shippingAddress"));
+
+    if (savedAddress) {
+      setFirstName(savedAddress.firstName || '');
+      setLastName(savedAddress.lastName || '');
+      setEmail(savedAddress.email || '');
+      setStreet(savedAddress.street || '');
+      setCity(savedAddress.city || '');
+      setState(savedAddress.state || '');
+      setZipCode(savedAddress.zipCode || '');
+      setCountry(savedAddress.country || '');
+      setMobile(savedAddress.mobile || '');
+    }
+
+    const redirectAfterLogin = localStorage.getItem("redirectAfterLogin");
+    const token = JSON.parse(localStorage.getItem('user'))?.token;
+
+    if (redirectAfterLogin === "placeOrderPending" && token) {
+      localStorage.removeItem("redirectAfterLogin");
+      placeOrder(navigate);
+    }
+  }, [navigate, placeOrder]);
+  
   const handlePlaceOrder = () => {
     const address = {
       firstName,
@@ -36,18 +61,19 @@ const PlaceOrder = () => {
       country,
       mobile,
     };
-
-    // Save address and payment method temporarily
+  
     localStorage.setItem("shippingAddress", JSON.stringify(address));
     localStorage.setItem("paymentMethod", method);
-
+  
     if (!isLoggedIn) {
-      localStorage.setItem("redirectAfterLogin", "/orders");
+      localStorage.setItem("redirectAfterLogin", "placeOrderPending");
+      localStorage.setItem("showLoginToast", "true"); // ✅ Save a flag
       navigate("/login");
     } else {
       placeOrder(navigate);
     }
   };
+  
 
   return (
     <div className='flex flex-col justify-between gap-4 pt-5 sm:flex-row sm:pt-14 min-h-[80vh] border-t'>
@@ -84,7 +110,7 @@ const PlaceOrder = () => {
           onChange={(e) => setStreet(e.target.value)}
           className='w-full px-4 py-2 border border-gray-300 rounded'
           type="text"
-          placeholder='Street'
+          placeholder='Address'
         />
         <div className='flex gap-3'>
           <input

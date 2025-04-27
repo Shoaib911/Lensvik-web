@@ -69,3 +69,34 @@ export const updateOrderStatus = async (req, res) => {
     res.status(500).json({ success: false, message: 'Internal server error' });
   }
 };
+
+// User: Cancel their own order
+export const cancelMyOrder = async (req, res) => {
+  try {
+    const { orderId } = req.params;
+
+    const order = await Order.findById(orderId);
+
+    if (!order) {
+      return res.status(404).json({ success: false, message: "Order not found" });
+    }
+
+    // If you still want super safe check:
+    if (order.userId.toString() !== req.user.id.toString()) {
+      return res.status(403).json({ success: false, message: "You are not authorized to cancel this order." });
+    }
+
+    if (order.status === "Delivered" || order.status === "Cancelled") {
+      return res.status(400).json({ success: false, message: "Order cannot be cancelled now" });
+    }
+
+    order.status = "Cancelled";
+    await order.save();
+
+    res.status(200).json({ success: true, message: "Order cancelled successfully", order });
+  } catch (error) {
+    console.error("Error cancelling order:", error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+};
+

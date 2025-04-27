@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { backendUrl, currency } from "../App";
-import { toast } from "react-toastify";
+import axios from "axios";
 import { Search } from "lucide-react";
+import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 
-const Orders = ({ token }) => {
+const DeliveredOrders = ({ token }) => {
   const [orders, setOrders] = useState([]);
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -26,20 +26,21 @@ const Orders = ({ token }) => {
     }
   };
 
-  // Fetch all orders
-  const fetchOrders = async () => {
+  // Fetch Delivered Orders only
+  const fetchDeliveredOrders = async () => {
     try {
       const response = await axios.get(`${backendUrl}/api/orders/admin/orders`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (response.data.success) {
-        setOrders(response.data.orders);
+        const delivered = response.data.orders.filter(order => order.status === "Delivered");
+        setOrders(delivered);
       } else {
         toast.error(response.data.message || "Failed to load orders.");
       }
     } catch (error) {
       console.error("Error fetching orders:", error);
-      toast.error("Error fetching order list.");
+      toast.error("Error fetching delivered orders.");
     }
   };
 
@@ -52,7 +53,7 @@ const Orders = ({ token }) => {
       });
       if (response.data.success) {
         toast.success("Order status updated!");
-        fetchOrders();
+        fetchDeliveredOrders();
       } else {
         toast.error(response.data.message || "Failed to update status.");
       }
@@ -63,22 +64,19 @@ const Orders = ({ token }) => {
   };
 
   useEffect(() => {
-    fetchOrders();
+    fetchDeliveredOrders();
     fetchProducts();
   }, []);
 
-  // Filter orders: Exclude Delivered orders + apply search filter
-  const filteredOrders = orders
-    .filter(order => order.status !== "Delivered")
-    .filter(order =>
-      order._id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (order.shippingAddress?.email || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (order.shippingAddress?.mobile || "").includes(searchTerm)
-    );
+  const filteredOrders = orders.filter(order =>
+    order._id.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (order.shippingAddress?.email || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (order.shippingAddress?.mobile || "").includes(searchTerm)
+  );
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-6">Orders</h2>
+      <h2 className="text-2xl font-semibold text-gray-800 mb-6">Delivered Orders</h2>
 
       {/* Search Bar */}
       <div className="mb-6 relative max-w-md">
@@ -107,18 +105,13 @@ const Orders = ({ token }) => {
       {/* Orders List */}
       {filteredOrders.length > 0 ? (
         filteredOrders.map((order) => (
-          <div
-            className="grid grid-cols-12 gap-2 py-3 px-4 border-b text-sm items-center"
-            key={order._id}
-          >
+          <div key={order._id} className="grid grid-cols-12 gap-2 py-3 px-4 border-b text-sm items-center">
             <div className="col-span-2 truncate" title={order._id}>
               #{order._id.slice(0, 6)}...{order._id.slice(-4)}
             </div>
-            <div className="col-span-3 truncate">{order.shippingAddress?.email}</div>
+            <div className="col-span-3 truncate" title={order.shippingAddress?.email}>{order.shippingAddress?.email}</div>
             <div className="col-span-2 text-center">{new Date(order.createdAt).toLocaleDateString()}</div>
-            <div className="col-span-2 text-center font-semibold">
-              {currency(order.totalAmount)}
-            </div>
+            <div className="col-span-2 text-center font-semibold">{currency(order.totalAmount)}</div>
             <div className="col-span-2 flex justify-center">
               <select
                 value={order.status}
@@ -148,7 +141,7 @@ const Orders = ({ token }) => {
           </div>
         ))
       ) : (
-        <div className="text-center text-gray-500 py-6">No orders found.</div>
+        <div className="text-center text-gray-500 py-6">No delivered orders found.</div>
       )}
 
       {/* View Order Details Modal */}
@@ -246,12 +239,13 @@ const Orders = ({ token }) => {
           </div>
         </div>
       )}
+    
     </div>
   );
 };
 
-Orders.propTypes = {
-  token: PropTypes.string.isRequired,
+DeliveredOrders.propTypes = {
+  token: PropTypes.string,
 };
 
-export default Orders;
+export default DeliveredOrders;

@@ -77,4 +77,14 @@ const removeReview = async (req, res) => {
   }
 };
 
-export { addReview, listReviews, removeReview };
+export const getAllReviews = async (req, res) => {
+  try {
+    const reviews = await Review.find().sort({ createdAt: -1 }); // Latest reviews first
+    res.status(200).json({ success: true, reviews });
+  } catch (error) {
+    console.error("Error fetching all reviews:", error);
+    res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+};
+
+export { addReview, listReviews, removeReview};

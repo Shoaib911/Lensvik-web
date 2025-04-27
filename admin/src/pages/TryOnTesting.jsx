@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 
 const TryOnTesting = () => {
   const [products, setProducts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [selectedTryonImage, setSelectedTryonImage] = useState(null);
   const [showTryOnModal, setShowTryOnModal] = useState(false);
 
@@ -21,7 +22,9 @@ const TryOnTesting = () => {
     try {
       const response = await axios.get(`${backendUrl}/api/product/list`);
       if (response.data.success) {
-        setProducts(response.data.products);
+        // Only set products that have a Try-On image
+        const tryOnProducts = response.data.products.filter(p => p.processedTryonImage);
+        setProducts(tryOnProducts);
       } else {
         toast.error(response.data.message || "Failed to load products.");
       }
@@ -110,7 +113,7 @@ const TryOnTesting = () => {
       img.src = product.processedTryonImage;
       img.onload = () => {
         setSelectedTryonImage(img);
-        setShowTryOnModal(true); // Show modal after loading image
+        setShowTryOnModal(true);
       };
     }
   };
@@ -121,74 +124,101 @@ const TryOnTesting = () => {
     if (camera.current) camera.current.stop();
   };
 
+  // Filter products by name, category, or sub-category
+  const filteredProducts = products.filter(product => {
+    const searchLower = searchTerm.toLowerCase();
+    return (
+      (product.name?.toLowerCase().includes(searchLower)) ||
+      (product.category?.toLowerCase().includes(searchLower)) ||
+      (product.subCategory?.toLowerCase().includes(searchLower))
+    );
+  });
+
   return (
     <div className="p-6 flex flex-col gap-6">
       <h1 className="text-2xl font-bold mb-6">Try-On Testing</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {Array.isArray(products) && products.length > 0 ? (
-          products.map((product) => (
+      {/* Search Bar */}
+      <div className="mb-6">
+        <input
+          type="text"
+          placeholder="Search by Product Name, Category, or Sub-Category..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      {/* Products Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
             <div
               key={product._id}
-              className="border p-4 rounded-lg flex flex-col items-center justify-center gap-4"
+              className="border p-4 rounded-lg flex flex-col items-center justify-center gap-4 hover:shadow-md transition"
             >
               <img
                 src={product.image?.[0]}
                 alt={product.name}
-                className="w-40 h-40 object-cover rounded-md"
+                className="w-28 h-28 object-cover rounded-md"
               />
-              <h2 className="text-lg font-semibold">{product.name}</h2>
+              <h2 className="text-sm font-semibold text-center">{product.name}</h2>
 
-              {product.processedTryonImage ? (
-                <button
-                  onClick={() => handleSelectTryon(product)}
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg"
-                >
-                  Try On
-                </button>
-              ) : (
-                <p className="text-sm text-gray-500">No Try-On Image</p>
-              )}
+              <button
+                onClick={() => handleSelectTryon(product)}
+                className="bg-blue-600 text-white text-xs px-3 py-2 rounded-lg hover:bg-blue-700"
+              >
+                Try On
+              </button>
             </div>
           ))
         ) : (
-          <p className="text-center col-span-2 text-gray-500">
-            No products available
+          <p className="text-center col-span-5 text-gray-500">
+            No matching products found.
           </p>
         )}
       </div>
 
-      {/* Try-On Modal */}
       {showTryOnModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center">
-          <div className="relative bg-white p-6 rounded-lg shadow-lg w-[700px] h-[520px]">
-            <button
-              onClick={closeModal}
-              className="absolute top-2 right-2 text-xl text-gray-700 hover:text-red-600"
-            >
-              ✕
-            </button>
+  <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4">
+    <div className="relative bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl">
+      <button
+        onClick={closeModal}
+        className="absolute top-4 right-4 text-2xl text-gray-700 hover:text-red-600 z-10"
+      >
+        ✕
+      </button>
 
-            <h2 className="text-xl font-semibold mb-4 text-center">Virtual Try-On</h2>
+      <h2 className="text-xl font-semibold mb-4 text-center">
+        Virtual Try-On
+      </h2>
 
-            <div className="relative w-full flex justify-center">
-              <video
-                ref={webcamRef}
-                autoPlay
-                playsInline
-                muted
-                className="rounded-lg w-[640px] h-[480px]"
-              ></video>
-              <canvas
-                ref={canvasRef}
-                width="640"
-                height="480"
-                className="absolute top-0 left-0"
-              ></canvas>
-            </div>
-          </div>
-        </div>
-      )}
+      <div className="relative w-full flex justify-center">
+        <video
+          ref={webcamRef}
+          autoPlay
+          playsInline
+          muted
+          className="rounded-lg w-full h-auto max-h-[80vh] object-contain border border-gray-200"
+        />
+        <canvas
+          ref={canvasRef}
+          width="640"
+          height="480"
+          className="absolute top-0 left-0 w-full h-full"
+        />
+      </div>
+
+      <div className="mt-4 text-center text-sm text-gray-600">
+        <p>Position your face properly in the frame and hold still</p>
+        <p className="text-xs text-gray-500 mt-1">
+          Ensure good lighting and remove any obstructions like glasses, hats, etc.
+        </p>
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };
