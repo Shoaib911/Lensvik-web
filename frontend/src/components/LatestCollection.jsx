@@ -8,8 +8,9 @@ const LatestCollection = () => {
   const [latestProducts, setLatestProducts] = useState([]);
 
   useEffect(() => {
+    // ✅ Corrected to watch when products change
     setLatestProducts(products.slice(0, 10));
-  }, []);
+  }, [products]);
 
   return (
     <div className="my-10">
@@ -23,18 +24,24 @@ const LatestCollection = () => {
 
       {/* Rendering Product Items */}
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-6">
-        {latestProducts.map((item, index) => (
-          <ProductItem
-                   key={index}
-                   id={item._id}
-                   image={item.image}
-                   name={item.name}
-                   price={item.price}
-                   salePrice={item.salePrice}
-                   OnSale={item.OnSale}
-                   sizes={item.sizes}
-                 />
-        ))}
+        {latestProducts.length > 0 ? (
+          latestProducts.map((item, index) => (
+            <ProductItem
+              key={index}
+              id={item._id}
+              image={item.image}
+              name={item.name}
+              price={item.originalPrice}
+              salePrice={item.salePrice}
+              OnSale={item.onSale}
+              sizes={item.sizes}
+            />
+          ))
+        ) : (
+          <div className="col-span-full text-center text-gray-500">
+            No Products Available.
+          </div>
+        )}
       </div>
     </div>
   );

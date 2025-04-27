@@ -24,28 +24,33 @@ const CategoryPage = () => {
 
   const applyFilter = () => {
     let productsCopy = products.slice();
-     // Filter by selected main category
- // Convert category names to lowercase for case-insensitive comparison
- const selectedCategory = mainCategory.toLowerCase();
-// Filter by selected main category
-productsCopy = productsCopy.filter(
-    (item) => item.category.toLowerCase() === selectedCategory
-  );
+    const selectedCategory = mainCategory.toLowerCase();
+
+    // ✅ Fixed Category Filter (real backend structure)
+    productsCopy = productsCopy.filter((item) => {
+      return item.categories &&
+        item.categories.length > 0 &&
+        item.categories[0].category &&
+        item.categories[0].category.toLowerCase() === selectedCategory;
+    });
+
+    // Search filter
     if (showSearch && search) {
       productsCopy = productsCopy.filter((item) =>
-        item.name.toLowerCase().includes(search.toLowerCase())
+        item.name?.toLowerCase().includes(search.toLowerCase())
       );
     }
 
-   // Apply size filter (fix: use .some() for array)
-  if (size.length > 0) {
-    productsCopy = productsCopy.filter((item) =>
-      size.some((s) => item.sizes.includes(s))
-    );
-  }
+    // Size filter
+    if (size.length > 0) {
+      productsCopy = productsCopy.filter((item) =>
+        size.some((s) => item.sizes?.includes(s))
+      );
+    }
 
+    // Price range filter
     productsCopy = productsCopy.filter(
-      (item) => item.price >= priceRange[0] && item.price <= priceRange[1]
+      (item) => item.originalPrice >= priceRange[0] && item.originalPrice <= priceRange[1]
     );
 
     setFilterProducts(productsCopy);
@@ -56,10 +61,10 @@ productsCopy = productsCopy.filter(
 
     switch (sortType) {
       case "low-high":
-        sortedProducts.sort((a, b) => a.price - b.price);
+        sortedProducts.sort((a, b) => a.originalPrice - b.originalPrice);
         break;
       case "high-low":
-        sortedProducts.sort((a, b) => b.price - a.price);
+        sortedProducts.sort((a, b) => b.originalPrice - a.originalPrice);
         break;
       default:
         applyFilter();
@@ -75,8 +80,7 @@ productsCopy = productsCopy.filter(
 
   useEffect(() => {
     applyFilter();
-  }, [size, priceRange, search, showSearch, mainCategory, products]); // Include `subCategory`
-  
+  }, [size, priceRange, search, showSearch, mainCategory, products]);
 
   useEffect(() => {
     sortProduct();
@@ -84,7 +88,7 @@ productsCopy = productsCopy.filter(
 
   return (
     <div className="flex flex-col gap-1 pt-10 border-t sm:flex-row sm:gap-10">
-      {/* Filter Options */}
+      {/* Filters Sidebar */}
       <div className="min-w-60">
         <p
           onClick={() => setShowFilter(!showFilter)}
@@ -98,7 +102,7 @@ productsCopy = productsCopy.filter(
           />
         </p>
 
-        {/* Size Filters */}
+        {/* Size Filter */}
         <div className={`border border-gray-300 pl-5 py-3 mt-6 ${showFilter ? "" : "hidden"} sm:block`}>
           <p className="mb-3 text-sm font-medium">SIZE</p>
           {['S', 'M', 'L', 'XL'].map((sizeOption) => (
@@ -115,12 +119,12 @@ productsCopy = productsCopy.filter(
           ))}
         </div>
 
-        {/* Price Range Slider */}
+        {/* Price Range Filter */}
         <div className={`border border-gray-300 pl-5 py-3 mt-6 ${showFilter ? "" : "hidden"} sm:block`}>
           <p className="mb-3 text-sm font-medium">PRICE RANGE</p>
           <input
             type="range"
-            min="200"
+            min="0"
             max="10000"
             value={priceRange[1]}
             onChange={(e) => setPriceRange([0, Number(e.target.value)])}
@@ -128,7 +132,7 @@ productsCopy = productsCopy.filter(
           <p>${priceRange[0]} - ${priceRange[1]}</p>
         </div>
 
-        {/* Clear Filters Button */}
+        {/* Clear Filters */}
         <button
           className={`px-4 py-2 mt-1 text-white bg-black rounded hover:bg-gray-900 ${showFilter ? "block" : "hidden"} sm:block`}
           onClick={clearFilters}
@@ -137,12 +141,12 @@ productsCopy = productsCopy.filter(
         </button>
       </div>
 
-      {/* View Product Items */}
+      {/* Products Section */}
       <div className="flex-1">
         <div className="flex justify-between mb-4 text-base sm:text-2xl">
           <Title text1={mainCategory.toUpperCase()} text2={"COLLECTIONS"} />
-          
-          {/* Product Sort */}
+
+          {/* Sort Dropdown */}
           <select
             onChange={(e) => setSortType(e.target.value)}
             className="px-2 text-sm border-2 border-gray-300"
@@ -153,17 +157,26 @@ productsCopy = productsCopy.filter(
           </select>
         </div>
 
-        {/* Display Products */}
+        {/* Products Grid */}
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 gap-y-6">
-          {filterProducts.map((item, index) => (
-            <ProductItem
-              key={index}
-              id={item._id}
-              name={item.name}
-              image={item.image}
-              price={item.price}
-            />
-          ))}
+          {filterProducts.length > 0 ? (
+            filterProducts.map((item, index) => (
+              <ProductItem
+                key={index}
+                id={item._id}
+                name={item.name}
+                image={item.image}
+                price={item.originalPrice}
+                salePrice={item.salePrice}
+                OnSale={item.onSale}
+                sizes={item.sizes}
+              />
+            ))
+          ) : (
+            <div className="text-center text-gray-500 col-span-full">
+              No products found.
+            </div>
+          )}
         </div>
       </div>
     </div>

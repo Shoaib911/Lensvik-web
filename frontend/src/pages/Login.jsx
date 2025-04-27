@@ -26,7 +26,11 @@ const Login = () => {
         const data = await response.json();
 
         if (data.success) {
-          localStorage.setItem("user", JSON.stringify({ token: data.token }));
+          localStorage.setItem("user", JSON.stringify({
+            token: data.token,
+            name: name,      // 👉 save name
+            email: email     // 👉 save email
+          }));
           alert("Registration successful! Please login now.");
           setCurrentState("Login"); // Switch to Login mode after successful sign-up
         } else {
@@ -44,7 +48,11 @@ const Login = () => {
         const data = await response.json();
 
         if (data.success) {
-          localStorage.setItem("user", JSON.stringify({ token: data.token }));
+          localStorage.setItem("user", JSON.stringify({
+            token: data.token,
+            name: data.user.name,   // 👈 important: get from server
+            email: data.user.email
+          }));
           alert("Login successful!");
           navigate("/orders"); // Redirect to Orders page after login
         } else {

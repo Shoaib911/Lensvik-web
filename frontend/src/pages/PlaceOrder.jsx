@@ -1,30 +1,54 @@
-import { useContext, useState } from 'react'
-import Title from '../components/Title'
-import CartTotal from '../components/CartTotal'
-import { assets } from '../assets/assets'
-import { ShopContext } from '../context/ShopContext'
+import { useContext, useState } from 'react';
+import Title from '../components/Title';
+import CartTotal from '../components/CartTotal';
+import { assets } from '../assets/assets';
+import { ShopContext } from '../context/ShopContext';
 import { useNavigate } from 'react-router-dom';
 
 const PlaceOrder = () => {
-
   const [method, setMethod] = useState('cod');
- // const {navigate} = useContext(ShopContext);
- const navigate = useNavigate();
- const { placeOrder } = useContext(ShopContext);
+  const navigate = useNavigate();
+  const { placeOrder } = useContext(ShopContext);
+
+  // Form states
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [street, setStreet] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [zipCode, setZipCode] = useState('');
+  const [country, setCountry] = useState('');
+  const [mobile, setMobile] = useState('');
 
   // Check if user is logged in
   const isLoggedIn = !!localStorage.getItem("user");
 
   const handlePlaceOrder = () => {
+    const address = {
+      firstName,
+      lastName,
+      email,
+      street,
+      city,
+      state,
+      zipCode,
+      country,
+      mobile,
+    };
+
+    // Save address and payment method temporarily
+    localStorage.setItem("shippingAddress", JSON.stringify(address));
+    localStorage.setItem("paymentMethod", method);
+
     if (!isLoggedIn) {
       localStorage.setItem("redirectAfterLogin", "/orders");
       navigate("/login");
     } else {
-      placeOrder(navigate);  // Pass `navigate` as a parameter
+      placeOrder(navigate);
     }
   };
-  
-  
+
   return (
     <div className='flex flex-col justify-between gap-4 pt-5 sm:flex-row sm:pt-14 min-h-[80vh] border-t'>
       {/* Left Side Content */}
@@ -33,62 +57,82 @@ const PlaceOrder = () => {
           <Title text1={'DELIVERY'} text2={'INFORMATION'} />
         </div>
         <div className='flex gap-3'>
-          <input 
-            className='w-full px-4 py-2 border border-gray-300 rounded' 
-            type="text" 
-            placeholder='First Name' 
+          <input
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            className='w-full px-4 py-2 border border-gray-300 rounded'
+            type="text"
+            placeholder='First Name'
           />
-          <input 
-            className='w-full px-4 py-2 border border-gray-300 rounded' 
-            type="text" 
-            placeholder='Last Name' 
+          <input
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            className='w-full px-4 py-2 border border-gray-300 rounded'
+            type="text"
+            placeholder='Last Name'
           />
         </div>
-        <input 
-          className='w-full px-4 py-2 border border-gray-300 rounded' 
-          type="email" 
-          placeholder='Email Address' 
+        <input
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className='w-full px-4 py-2 border border-gray-300 rounded'
+          type="email"
+          placeholder='Email Address'
         />
-        <input 
-          className='w-full px-4 py-2 border border-gray-300 rounded' 
-          type="text" 
-          placeholder='Street' 
+        <input
+          value={street}
+          onChange={(e) => setStreet(e.target.value)}
+          className='w-full px-4 py-2 border border-gray-300 rounded'
+          type="text"
+          placeholder='Street'
         />
         <div className='flex gap-3'>
-          <input 
-            className='w-full px-4 py-2 border border-gray-300 rounded' 
-            type="text" 
-            placeholder='City' 
+          <input
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            className='w-full px-4 py-2 border border-gray-300 rounded'
+            type="text"
+            placeholder='City'
           />
-          <input 
-            className='w-full px-4 py-2 border border-gray-300 rounded' 
-            type="text" 
-            placeholder='State' 
+          <input
+            value={state}
+            onChange={(e) => setState(e.target.value)}
+            className='w-full px-4 py-2 border border-gray-300 rounded'
+            type="text"
+            placeholder='State'
           />
         </div>
         <div className='flex gap-3'>
-          <input 
-            className='w-full px-4 py-2 border border-gray-300 rounded' 
-            type="number" 
-            placeholder='Zip Code' 
+          <input
+            value={zipCode}
+            onChange={(e) => setZipCode(e.target.value)}
+            className='w-full px-4 py-2 border border-gray-300 rounded'
+            type="number"
+            placeholder='Zip Code'
           />
-          <input 
-            className='w-full px-4 py-2 border border-gray-300 rounded' 
-            type="text" 
-            placeholder='Country' 
+          <input
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
+            className='w-full px-4 py-2 border border-gray-300 rounded'
+            type="text"
+            placeholder='Country'
           />
         </div>
-        <input 
-          className='w-full px-4 py-2 border border-gray-300 rounded' 
-          type="number" 
-          placeholder='Mobile' 
+        <input
+          value={mobile}
+          onChange={(e) => setMobile(e.target.value)}
+          className='w-full px-4 py-2 border border-gray-300 rounded'
+          type="number"
+          placeholder='Mobile'
         />
       </div>
+
       {/* Right Side Content */}
       <div className='mt-8'>
         <div className='mt-8 min-w-80'>
           <CartTotal />
         </div>
+
         {/* Payment Methods Selection */}
         <div className='mt-12'>
           <Title text1={'PAYMENT'} text2={'METHODS'} />
@@ -106,15 +150,20 @@ const PlaceOrder = () => {
               <p className='mx-4 text-sm font-medium text-gray-500'>CASH ON DELIVERY</p>
             </div>
           </div>
+
+          {/* Place Order Button */}
           <div className='w-full mt-8 text-end'>
-            <button onClick={handlePlaceOrder} className='px-16 py-3 text-sm text-white bg-black active:bg-gray-800'>
+            <button
+              onClick={handlePlaceOrder}
+              className='px-16 py-3 text-sm text-white bg-black active:bg-gray-800'
+            >
               PLACE ORDER
             </button>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PlaceOrder
+export default PlaceOrder;
