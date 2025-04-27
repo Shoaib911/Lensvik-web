@@ -96,6 +96,7 @@ import razorpay_logo from './razorpay_logo.png'
 import stripe_logo from './stripe_logo.png'
 import cross_icon from './cross_icon.png'
 import whatsapp from './whatsapp.png'
+import size_chart from './sizechart.jpg'
 
 export const assets = {
     upload_area,
@@ -128,7 +129,8 @@ export const assets = {
     Kid_Glasses,
     intelligent_glasses,
     whatsapp,
-    tryon_icon
+    tryon_icon,
+    size_chart
 }
 
 export const products=[

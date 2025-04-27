@@ -27,6 +27,8 @@ const Product = () => {
   // Try-on state
   const [selectedTryonImage, setSelectedTryonImage] = useState(null);
   const [showTryOnModal, setShowTryOnModal] = useState(false);
+  const [showSizeChart, setShowSizeChart] = useState(false);
+
  
 
   // Refs
@@ -441,20 +443,60 @@ const handleReviewSubmit = async (e) => {
             </button>
           )}
 
-          <div className="flex flex-col gap-4 my-8">
-            <p>Select Size</p>
-            <div className="flex gap-2 flex-wrap">
-              {productData.sizes.map((item, index) => (
-                <button
-                  key={index}
-                  onClick={() => setSize(item)}
-                  className={`border py-2 px-4 bg-gray-100 rounded-md ${item === size ? 'border-orange-500' : ''}`}
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
-          </div>
+<div className="flex flex-col gap-4 my-8">
+  <p>Select Size</p>
+  <div className="flex gap-2 flex-wrap">
+    {productData.sizes.map((item, index) => (
+      <button
+        key={index}
+        onClick={() => setSize(item)}
+        className={`border py-2 px-4 bg-gray-100 rounded-md ${item === size ? 'border-orange-500' : ''}`}
+      >
+        {item}
+      </button>
+    ))}
+  </div>
+
+  {/* View Size Chart Button */}
+  <button
+    onClick={() => setShowSizeChart(true)}
+    className="mt-4 border border-gray-400 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-200 text-sm w-fit"
+  >
+    📏 View Size Chart
+  </button>
+</div>
+
+{/* Size Chart Modal */}
+{showSizeChart && (
+  <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4">
+    <div className="relative bg-white p-4 rounded-lg shadow-lg w-full max-w-3xl">
+      
+      {/* Close Button */}
+      <button
+        onClick={() => setShowSizeChart(false)}
+        className="absolute top-4 right-4 text-2xl text-gray-700 hover:text-red-600 z-10"
+      >
+        ✕
+      </button>
+
+      {/* Heading */}
+      <h2 className="text-xl font-semibold mb-4 text-center">
+        Size Guide
+      </h2>
+
+      {/* Image perfectly fits without scroll */}
+      <div className="flex justify-center items-center">
+        <img 
+          src={assets.size_chart}
+          alt="Size Guide"
+          className="max-w-full max-h-[80vh] object-contain rounded-md shadow-md"
+        />
+      </div>
+
+    </div>
+  </div>
+)}
+
 
           <button
             onClick={() => addToCart(productData._id, size)}
