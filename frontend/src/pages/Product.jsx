@@ -183,13 +183,13 @@ const onResults = (results) => {
     const centerY = nose.y * canvasRef.current.height;
 
     const faceWidth = Math.max(10, Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2));
-    const frameWidth = faceWidth * 1.18;
+    const frameWidth = faceWidth * 1.25;
 
     const isMobile = detectMobile(); // Use updated helper
     const frameHeight = frameWidth * (isMobile ? 0.4 : 0.65);
 
     // ✅ Adjust alignment offsets only for mobile
-    const offsetY = isMobile ? -frameHeight * 0.08 : -15; // vertical nudge down
+    const offsetY = isMobile ? -frameHeight *0.10 : -15; // vertical nudge down
     const offsetX = isMobile ?  frameWidth * 0.025 : 0;   // horizontal nudge right
 
     const minX = Math.max(0, centerX - frameWidth / 2 + offsetX);
