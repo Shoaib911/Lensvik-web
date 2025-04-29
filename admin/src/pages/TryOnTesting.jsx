@@ -90,10 +90,10 @@ const TryOnTesting = () => {
       const x2 = rightTemple.x * canvasRef.current.width;
       const y2 = rightTemple.y * canvasRef.current.height;
       const centerX = nose.x * canvasRef.current.width;
-      const centerY = nose.y * canvasRef.current.height - 5;
+      const centerY = nose.y * canvasRef.current.height - 15;
 
       const faceWidth = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
-      const frameWidth = faceWidth * 1.35;
+      const frameWidth = faceWidth * 1.15;
       const frameHeight =
         (frameWidth * selectedTryonImage.height) / selectedTryonImage.width;
 

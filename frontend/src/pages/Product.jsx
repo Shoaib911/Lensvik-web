@@ -14,6 +14,9 @@ const Product = () => {
   const [image, setImage] = useState('');
   const [size, setSize] = useState('');
   const [reviews, setReviews] = useState([]);
+  const [reviewError, setReviewError] = useState(false);
+  
+
   
   const [newReview, setNewReview] = useState({ 
     name: '', 
@@ -37,6 +40,7 @@ const Product = () => {
   const faceMesh = useRef(null);
   const camera = useRef(null);
 
+  
   useEffect(() => {
     const selectedProduct = products.find((item) => item._id === productId);
     if (selectedProduct) {
@@ -96,17 +100,19 @@ const Product = () => {
 
   const fetchReviews = async () => {
     try {
-      const response = await axios.get(`${backendUrl}/api/reviews/product/${productId}`);
+      const response = await axios.get(`${backendUrl}/api/reviews/product/${encodeURIComponent(productId)}`);
       if (response.data.success) {
         setReviews(response.data.reviews);
+        setReviewError(false);
       } else {
-        toast.error(response.data.message || "Failed to load reviews");
+        setReviewError(true);
       }
     } catch (error) {
       console.error("Error fetching reviews:", error);
-      toast.error("Something went wrong while fetching reviews");
+      setReviewError(true); // No toast
     }
   };
+  
 
   useEffect(() => {
     const selectedProduct = products.find((item) => item._id === productId);
@@ -144,58 +150,69 @@ const Product = () => {
   camera.current.start();
 };
 
-  const onResults = (results) => {
-    if (!canvasRef.current || !selectedTryonImage) return;
-    
-    const canvasCtx = canvasRef.current.getContext('2d');
-    canvasCtx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-  
-    if (results.multiFaceLandmarks?.length > 0) {
+const detectMobile = () => {
+  return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+};
+
+
+const onResults = (results) => {
+  if (!canvasRef.current || !selectedTryonImage) return;
+
+  const canvasCtx = canvasRef.current.getContext('2d');
+  canvasCtx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+
+  if (results.multiFaceLandmarks?.length > 0) {
+    canvasCtx.drawImage(
+      results.image,
+      0,
+      0,
+      canvasRef.current.width,
+      canvasRef.current.height
+    );
+
+    const landmarks = results.multiFaceLandmarks[0];
+    const leftTemple = landmarks[234];
+    const rightTemple = landmarks[454];
+    const nose = landmarks[6];
+
+    const x1 = leftTemple.x * canvasRef.current.width;
+    const y1 = leftTemple.y * canvasRef.current.height;
+    const x2 = rightTemple.x * canvasRef.current.width;
+    const y2 = rightTemple.y * canvasRef.current.height;
+    const centerX = nose.x * canvasRef.current.width;
+    const centerY = nose.y * canvasRef.current.height;
+
+    const faceWidth = Math.max(10, Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2));
+    const frameWidth = faceWidth * 1.18;
+
+    const isMobile = detectMobile(); // Use updated helper
+    const frameHeight = frameWidth * (isMobile ? 0.4 : 0.65);
+
+    // ✅ Adjust alignment offsets only for mobile
+    const offsetY = isMobile ? -frameHeight * 0.10 : -15; // vertical nudge down
+    const offsetX = isMobile ?  frameWidth * 0.025 : 0;   // horizontal nudge right
+
+    const minX = Math.max(0, centerX - frameWidth / 2 + offsetX);
+    const minY = Math.max(0, centerY - frameHeight / 2 + offsetY);
+    const maxX = Math.min(canvasRef.current.width, centerX + frameWidth / 2 + offsetX);
+    const maxY = Math.min(canvasRef.current.height, centerY + frameHeight / 2 + offsetY);
+    const visibleWidth = maxX - minX;
+    const visibleHeight = maxY - minY;
+
+    if (visibleWidth > 0 && visibleHeight > 0) {
       canvasCtx.drawImage(
-        results.image,
-        0,
-        0,
-        canvasRef.current.width,
-        canvasRef.current.height
+        selectedTryonImage,
+        minX,
+        minY,
+        visibleWidth,
+        visibleHeight
       );
-  
-      const landmarks = results.multiFaceLandmarks[0];
-      const leftTemple = landmarks[234];
-      const rightTemple = landmarks[454];
-      const nose = landmarks[6];
-  
-      // Convert normalized coordinates to canvas coordinates
-      const x1 = leftTemple.x * canvasRef.current.width;
-      const y1 = leftTemple.y * canvasRef.current.height;
-      const x2 = rightTemple.x * canvasRef.current.width;
-      const y2 = rightTemple.y * canvasRef.current.height;
-      const centerX = nose.x * canvasRef.current.width;
-      const centerY = nose.y * canvasRef.current.height - 5;
-  
-      // Calculate face width and frame dimensions with safety checks
-      const faceWidth = Math.max(10, Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2));
-      const frameWidth = faceWidth * 1.35;
-      const frameHeight = (frameWidth * selectedTryonImage.height) / selectedTryonImage.width;
-  
-      // Ensure the frame will be visible on canvas
-      const minX = Math.max(0, centerX - frameWidth / 2);
-      const minY = Math.max(0, centerY - frameHeight / 2);
-      const maxX = Math.min(canvasRef.current.width, centerX + frameWidth / 2);
-      const maxY = Math.min(canvasRef.current.height, centerY + frameHeight / 2);
-      const visibleWidth = maxX - minX;
-      const visibleHeight = maxY - minY;
-  
-      if (visibleWidth > 0 && visibleHeight > 0) {
-        canvasCtx.drawImage(
-          selectedTryonImage,
-          minX,
-          minY,
-          visibleWidth,
-          visibleHeight
-        );
-      }
     }
-  };
+  }
+};
+
+
+
 
 const handleTryOn = (product) => {
   if (!product.processedTryonImage) {
@@ -518,44 +535,33 @@ const handleReviewSubmit = async (e) => {
         </div>
       </div>
 
-      {/* Reviews Section */}
       <div className="mt-20 border px-6 py-6">
-        <h3 className="text-lg font-semibold">Customer Reviews</h3>
+  <h3 className="text-lg font-semibold">Customer Reviews</h3>
 
-        {reviews.length > 0 ? (
-          reviews.map((review, index) => (
-            <div key={index} className="border-b pb-6 mt-6">
-              <p className="font-medium">{review.name}</p>
-              <div className="flex gap-1">
-                {Array(review.rating).fill().map((_, i) => (
-                  <img
-                    key={i}
-                    src={assets.star_icon}
-                    alt="Star"
-                    className="w-4 h-4"
-                  />
-                ))}
-              </div>
-              <p className="text-gray-600 mt-2">{review.comment}</p>
-              <div className="flex gap-2 mt-2">
-              {review.images.map((img, i) => (
-  <img
-    key={i}
-    src={img}   // ✅ It's now directly the URL from database
-    alt="Review"
-    className="w-16 h-16 rounded-md object-cover"
-  />
-))}
-
-              </div>
-            </div>
-          ))
-        ) : (
-          <p className="text-gray-500 mt-4">
-            No reviews yet. Be the first to review this product!
-          </p>
-        )}
+  {reviewError ? (
+    <p className="text-red-500 mt-4">⚠️ Failed to load reviews. Please try again later.</p>
+  ) : reviews.length > 0 ? (
+    reviews.map((review, index) => (
+      <div key={index} className="border-b pb-6 mt-6">
+        <p className="font-medium">{review.name}</p>
+        <div className="flex gap-1">
+          {Array(review.rating).fill().map((_, i) => (
+            <img key={i} src={assets.star_icon} alt="Star" className="w-4 h-4" />
+          ))}
+        </div>
+        <p className="text-gray-600 mt-2">{review.comment}</p>
+        <div className="flex gap-2 mt-2">
+          {review.images.map((img, i) => (
+            <img key={i} src={img} alt="Review" className="w-16 h-16 rounded-md object-cover" />
+          ))}
+        </div>
       </div>
+    ))
+  ) : (
+    <p className="text-gray-500 mt-4">No reviews yet. Be the first to review this product!</p>
+  )}
+</div>
+
 
     {/* Review Submission Form */}
 <div className="mt-10 border px-6 py-6">
@@ -646,7 +652,6 @@ const handleReviewSubmit = async (e) => {
     ))}
   </div>
 </div>
-
 
     <button
       type="submit"
