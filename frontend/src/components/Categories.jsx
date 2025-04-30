@@ -23,7 +23,9 @@ const Categories = () => {
         { name: 'Sunglasses', img: assets.Sunglasses },
         { name: 'Intelligent Glasses', img: assets.intelligent_glasses },
         { name: 'Lenses', img: assets.lenses },
-        { name: 'Accessories', img: assets.accessories }
+        { name: 'Accessories', img: assets.accessories },
+        { name: 'Find Your width', img: assets.intelligent_glasses, link: '/findyourfit' }  //I want to find you fit link here for mobile screens
+
 
     ];
 
@@ -31,14 +33,19 @@ const Categories = () => {
         <div className='pb-3'>
             {/* 📱 Mobile View - Category Boxes */}
             <div className='grid grid-cols-4 gap-2 sm:hidden'>
-                {categoriesMobile.map((category, index) => (
-                    <Link key={index} to={`/category/${category.name.toLowerCase()}`} className='relative group'>
-                        <div className='w-full h-20 bg-gray-100 rounded-lg overflow-hidden shadow-md'>
-                            <img src={category.img} alt={category.name} className='w-full h-full object-cover' />
-                        </div>
-                        <p className='text-xs mt-2 text-center'>{category.name}</p>
-                    </Link>
-                ))}
+            {categoriesMobile.map((category, index) => (
+  <Link 
+    key={index} 
+    to={category.link || `/category/${category.name.toLowerCase()}`} 
+    className='relative group'
+  >
+    <div className='w-full h-20 bg-gray-100 rounded-lg overflow-hidden shadow-md'>
+      <img src={category.img} alt={category.name} className='w-full h-full object-cover' />
+    </div>
+    <p className='text-xs mt-2 text-center'>{category.name}</p>
+  </Link>
+))}
+
             </div>
 
             {/* 🖥️ Desktop View - Navbar Style */}
@@ -76,6 +83,13 @@ const Categories = () => {
                         )}
                     </div>
                 ))}
+                {/* ✅ Add "Find Your Fit" at the end */}
+<Link 
+  to="/findyourfit"
+  className="text-sm text-gray-700 font-medium hover:text-black transition-colors block px-3 py-2"
+>
+  FIND YOUR FIT
+</Link>
             </div>
         </div>
     );

@@ -97,7 +97,11 @@ import stripe_logo from './stripe_logo.png'
 import cross_icon from './cross_icon.png'
 import whatsapp from './whatsapp.png'
 import size_chart from './sizechart.jpg'
-
+import card_1 from './credit-card-1-01.jpg'
+import card_2 from './credit-card-1-02.jpg'
+import card_3 from './credit-card-size-marks-01.jpg'
+import card_4 from './credit-card-size-marks-02.jpg'
+import card_5 from './credit-card-size-marks-03.jpg'
 export const assets = {
     upload_area,
     logo,
@@ -130,7 +134,12 @@ export const assets = {
     intelligent_glasses,
     whatsapp,
     tryon_icon,
-    size_chart
+    size_chart,
+    card_1,
+    card_2,
+    card_3,
+    card_4,
+    card_5
 }
 
 export const products=[
