@@ -24,7 +24,7 @@ const Categories = () => {
         { name: 'Intelligent Glasses', img: assets.intelligent_glasses },
         { name: 'Lenses', img: assets.lenses },
         { name: 'Accessories', img: assets.accessories },
-        { name: 'Find Your width', img: assets.intelligent_glasses, link: '/findyourfit' }  //I want to find you fit link here for mobile screens
+        { name: 'Find Your width', img: assets.intelligent_glasses, link: '/findyoursize' }  //I want to find you fit link here for mobile screens
 
 
     ];
@@ -85,7 +85,7 @@ const Categories = () => {
                 ))}
                 {/* ✅ Add "Find Your Fit" at the end */}
 <Link 
-  to="/findyourfit"
+  to="/findyoursize"
   className="text-sm text-gray-700 font-medium hover:text-black transition-colors block px-3 py-2"
 >
   FIND YOUR FIT

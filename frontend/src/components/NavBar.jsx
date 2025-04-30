@@ -177,7 +177,7 @@ const NavBar = () => {
                             )}
                         </div>
                     ))}
-                    <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to='/findyourfit'>
+                    <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to='/findyoursize'>
   FIND YOUR FIT
 </NavLink>
 

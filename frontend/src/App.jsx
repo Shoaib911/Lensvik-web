@@ -15,7 +15,7 @@ import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import FindYourFit from './pages/FindYourFit.jsx';
+import FindYourSize from './pages/FindYourSize.jsx';
 
 
 
@@ -38,7 +38,7 @@ const App = () => {
         <Route path='/profile' element={<Profile />} />
         <Route path='/place-order' element={<PlaceOrder />} />
         <Route path='/orders' element={<Orders />} />
-        <Route path="/findyourfit" element={<FindYourFit />} />
+        <Route path="/findyoursize" element={<FindYourSize />} />
       </Routes>
       <Footer />
     </div>

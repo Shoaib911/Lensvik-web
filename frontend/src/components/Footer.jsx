@@ -32,7 +32,7 @@ const Footer = () => {
                     <Link to='/contact'>
                         <li>Privacy & Policy</li>
                     </Link>
-                    <Link to='/findyourfit'>
+                    <Link to='/findyoursize'>
                         <li>Find Your Frame Size</li>
                     </Link>
                 </ul>
