@@ -6,7 +6,7 @@ import NewsLetterBox from '../components/NewsLetterBox';
 const Contact = () => {
   return (
     <div>
-      {/* Page Title */}
+      {/* Page Title of contact page*/}
       <div className='pt-10 text-2xl text-center border-t'>
         <Title text1={'CONTACT'} text2={'US'} />
       </div>
