@@ -186,7 +186,7 @@ const onResults = (results) => {
     const frameWidth = faceWidth * 1.25;
 
     const isMobile = detectMobile(); // Use updated helper
-    const frameHeight = frameWidth * (isMobile ? 0.4 : 0.65);
+    const frameHeight = frameWidth * (isMobile ? 0.35 : 0.65);
 
     // ✅ Adjust alignment offsets only for mobile
     const offsetY = isMobile ? -frameHeight *0.08 : -15; // vertical nudge down
