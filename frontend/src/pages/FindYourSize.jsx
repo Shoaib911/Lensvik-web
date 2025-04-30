@@ -55,11 +55,11 @@ const FindYourFit = () => {
     await tf.ready();
 
     if (!detector) {
-      detector = await createDetector(SupportedModels.MediaPipeFaceMesh, {
-        runtime: "mediapipe",
-        refineLandmarks: true,
-        solutionPath: `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh`,
-      });
+        detector = await createDetector(SupportedModels.MediaPipeFaceMesh, {
+            runtime: "mediapipe",
+            refineLandmarks: true,
+            solutionPath: "https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh",
+        });
     }
 
     const video = videoRef.current;
