@@ -5,7 +5,6 @@ import {
   createDetector,
   SupportedModels,
 } from "@tensorflow-models/face-landmarks-detection";
-import "@mediapipe/face_mesh";
 import { assets } from "../assets/assets";
 
 let detector = null;
