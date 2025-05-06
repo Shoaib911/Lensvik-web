@@ -27,6 +27,8 @@ const [selectedImageForProcessing, setSelectedImageForProcessing] = useState(nul
 const [processedImage, setProcessedImage] = useState(null);
 const [isProcessing, setIsProcessing] = useState(false);
 const [processingError, setProcessingError] = useState(null);
+const [processedImagePreview, setProcessedImagePreview] = useState(null);
+
 
 
   const categories = {
@@ -43,12 +45,12 @@ const [processingError, setProcessingError] = useState(null);
     e.preventDefault();
     try {
       const formData = new FormData();
-
+  
       image1 && formData.append("image1", image1);
       image2 && formData.append("image2", image2);
       image3 && formData.append("image3", image3);
       image4 && formData.append("image4", image4);
-
+  
       formData.append("name", name);
       formData.append("description", description);
       formData.append("originalPrice", originalPrice);
@@ -56,33 +58,38 @@ const [processingError, setProcessingError] = useState(null);
       if (onSale) {
         formData.append("salePrice", salePrice);
       }
-      
+  
       // Prepare categories and subcategories for backend
       const categoriesData = selectedCategories.map(cat => ({
         category: cat,
         subCategories: categorySubcategories[cat] || []
       }));
-      
+  
       formData.append("categories", JSON.stringify(categoriesData));
       formData.append("brand", brand);
       formData.append("sizes", JSON.stringify(Array.isArray(sizes) ? sizes : []));
       formData.append("bestSeller", bestSeller);
-
+  
+      
       if (processedImage) {
         formData.append("processedImage", processedImage);
       }
-      
+  
+      // Debug: log all fields being sent
+      for (let [key, value] of formData.entries()) {
+        console.log(`${key}:`, value);
+      }
+  
       const response = await axios.post(
         backendUrl + "/api/product/add",
         formData,
-        { 
+        {
           headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${token}`, // ✅ CORRECT
+            Authorization: `Bearer ${token}` // ✅ DO NOT set Content-Type manually
           },
         }
       );
-
+  
       if (response.data.success) {
         toast.success(response.data.message);
         resetForm();
@@ -90,8 +97,9 @@ const [processingError, setProcessingError] = useState(null);
         toast.error(response.data.message);
       }
     } catch (error) {
-      console.error(error);
-      toast.error("Something went wrong");
+      console.error("Form submission error:", error);
+      const message = error?.response?.data?.message || "Something went wrong while submitting the product.";
+      toast.error(message);
     }
   };
 
@@ -112,6 +120,15 @@ const [processingError, setProcessingError] = useState(null);
     setBestSeller(false);
   };
 
+  function blobToBase64(blob) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  }
+   
   const handleProcessImage = async () => {
     try {
       setIsProcessing(true);
@@ -129,48 +146,35 @@ const [processingError, setProcessingError] = useState(null);
         return;
       }
   
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const img = new Image();
-        img.src = event.target.result;
-        img.onload = () => {
-          const tempCanvas = document.createElement("canvas");
-          const tempCtx = tempCanvas.getContext("2d");
-          tempCanvas.width = img.width;
-          tempCanvas.height = img.height;
-          tempCtx.drawImage(img, 0, 0);
+      const formData = new FormData();
+      formData.append("file", selectedFile);
   
-          const imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
-          const data = imageData.data;
+      const response = await fetch("http://127.0.0.1:8000/image/process-image", {
+        method: "POST",
+        body: formData,
+      });
   
-          for (let i = 0; i < data.length; i += 4) {
-            const r = data[i];
-            const g = data[i + 1];
-            const b = data[i + 2];
-            const brightness = (r + g + b) / 3;
+      if (!response.ok) {
+        throw new Error("Failed to process image");
+      }
   
-            if (brightness > 200) {
-              data[i + 3] = 0; // full white - transparent
-            } else if (brightness > 170) {
-              data[i + 3] = 0; // semi-translucent zone
-            }
-          }
+      const blob = await response.blob();
   
-          tempCtx.putImageData(imageData, 0, 0);
-          const cleanedImage = tempCanvas.toDataURL("image/png");
-          setProcessedImage(cleanedImage);
-          setIsProcessing(false);
-        };
-      };
-      reader.readAsDataURL(selectedFile);
+      // ✅ Convert blob to File object before appending to form later
+      const base64 = await blobToBase64(blob);
+setProcessedImage(base64);
+setProcessedImagePreview(base64); // ✅ base64 can be used as image src directly
+ // 👈 create URL for preview
+
+  
+      toast.success("Image processed successfully!");
+      setIsProcessing(false);
     } catch (error) {
       console.error(error);
       setProcessingError("Error processing image");
       setIsProcessing(false);
     }
-  };
-  
-  
+  };  
 
   const handleCategoryChange = (e) => {
     const category = e.target.value;
@@ -336,10 +340,10 @@ const [processingError, setProcessingError] = useState(null);
 
       {processingError && <p className="text-red-600 mt-2">{processingError}</p>}
 
-      {processedImage && (
+      {processedImagePreview && (
         <div className="mt-6">
           <h3 className="font-semibold mb-2">Processed Image Preview:</h3>
-          <img src={processedImage} alt="Processed" className="w-40 h-auto mx-auto" />
+          <img src={processedImagePreview} alt="Processed" className="w-40 h-auto mx-auto" />
 
           <div className="flex gap-4 mt-4 justify-center">
             <button

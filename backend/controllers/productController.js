@@ -10,21 +10,34 @@ const addProduct = async (req, res) => {
       originalPrice,
       salePrice,
       onSale,
-      categories, // structured categories data
+      categories,
       brand,
       sizes,
       bestSeller,
-      processedImage, // 👈 new field (optional)
+      processedImage, // ✅ base64 string
     } = req.body;
 
-    const image1 = req.files.image1 && req.files.image1[0];
-    const image2 = req.files.image2 && req.files.image2[0];
-    const image3 = req.files.image3 && req.files.image3[0];
-    const image4 = req.files.image4 && req.files.image4[0];
+    const image1 = req.files?.image1?.[0];
+    const image2 = req.files?.image2?.[0];
+    const image3 = req.files?.image3?.[0];
+    const image4 = req.files?.image4?.[0];
 
-    const categoriesData = JSON.parse(categories);
+    // Safely parse JSON fields
+    let categoriesData = [];
+    let sizesData = [];
+    try {
+      categoriesData = JSON.parse(categories);
+    } catch (err) {
+      return res.status(400).json({ success: false, message: "Invalid categories JSON" });
+    }
 
-    if (!categoriesData || categoriesData.length === 0) {
+    try {
+      sizesData = JSON.parse(sizes);
+    } catch (err) {
+      return res.status(400).json({ success: false, message: "Invalid sizes JSON" });
+    }
+
+    if (!categoriesData.length) {
       return res.status(400).json({ success: false, message: "At least one category must be selected" });
     }
 
@@ -39,11 +52,10 @@ const addProduct = async (req, res) => {
       return res.status(400).json({ success: false, message: "Invalid sale price. It must be less than the original price." });
     }
 
-    const productImages = [image1, image2, image3, image4].filter((image) => image !== undefined);
-
-    let imageUrls = await Promise.all(
+    const productImages = [image1, image2, image3, image4].filter(Boolean);
+    const imageUrls = await Promise.all(
       productImages.map(async (image) => {
-        let result = await cloudinary.uploader.upload(image.path, {
+        const result = await cloudinary.uploader.upload(image.path, {
           resource_type: "image",
         });
         return result.secure_url;
@@ -51,13 +63,18 @@ const addProduct = async (req, res) => {
     );
 
     let processedImageUrl = null;
-    if (processedImage) {
-      const uploadResponse = await cloudinary.uploader.upload(processedImage, {
-        resource_type: "image",
-        folder: "tryon_images", // optional, you can store it in a special folder
-      });
-      processedImageUrl = uploadResponse.secure_url;
-    }
+try {
+  if (processedImage && processedImage.startsWith("data:image")) {
+    const uploadResponse = await cloudinary.uploader.upload(processedImage, {
+      resource_type: "image",
+      folder: "tryon_images",
+    });
+    processedImageUrl = uploadResponse.secure_url;
+  }
+} catch (err) {
+  console.error("Error uploading processedImage to Cloudinary:", err);
+}
+
 
     const productData = {
       name,
@@ -67,10 +84,10 @@ const addProduct = async (req, res) => {
       onSale: onSale === "true",
       categories: categoriesData,
       brand: brand || null,
-      sizes: JSON.parse(sizes),
+      sizes: sizesData,
       bestSeller: bestSeller === "true",
       image: imageUrls,
-      processedTryonImage: processedImageUrl, // 👈 save separately
+      processedTryonImage: processedImageUrl,
       date: Date.now(),
     };
 
@@ -79,10 +96,11 @@ const addProduct = async (req, res) => {
 
     res.status(201).json({ success: true, message: "Product added" });
   } catch (error) {
-    console.log("Error while adding product: ", error);
+    console.error("Error while adding product:", error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
+
 
 
 // INFO: Route for fetching all products

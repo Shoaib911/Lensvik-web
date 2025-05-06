@@ -29,6 +29,16 @@ const EditProduct = ({ token,productData, onClose, onUpdated }) => {
     "INTELLIGENT GLASSES": ["Smart Lenses", "Blue Light Filter"]
   };
 
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  
   useEffect(() => {
     if (productData) {
       setName(productData.name);
@@ -50,6 +60,14 @@ const EditProduct = ({ token,productData, onClose, onUpdated }) => {
   const handleUpdateProduct = async (e) => {
     e.preventDefault();
     try {
+      let processedTryonImage = null;
+
+if (processedImage instanceof File) {
+  const base64 = await fileToBase64(processedImage);
+  processedTryonImage = base64;
+}
+
+  
       const updatedData = {
         productId: productData._id,
         name,
@@ -60,18 +78,20 @@ const EditProduct = ({ token,productData, onClose, onUpdated }) => {
           category: cat,
           subCategories: categorySubcategories[cat] || []
         })),
-        ...(processedImage && { processedTryonImage: processedImage }),
+        ...(processedTryonImage && { processedTryonImage }),
       };
-
+  
       const response = await axios.post(
         `${backendUrl}/api/product/update`,
         updatedData,
-        {  headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },}
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
-
+  
       if (response.data.success) {
         toast.success("Product updated successfully.");
         onUpdated();
@@ -83,36 +103,41 @@ const EditProduct = ({ token,productData, onClose, onUpdated }) => {
       toast.error("Error updating product.");
     }
   };
+  
 
-  const startReprocess = (imageUrl) => {
-    const img = new Image();
-    img.crossOrigin = "anonymous";
-    img.src = imageUrl;
-    img.onload = () => {
-      const canvas = canvasRef.current;
-      const ctx = canvas.getContext("2d");
-      canvas.width = img.width;
-      canvas.height = img.height;
-      ctx.drawImage(img, 0, 0);
-
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const data = imageData.data;
-
-      for (let i = 0; i < data.length; i += 4) {
-        const r = data[i], g = data[i + 1], b = data[i + 2];
-        const brightness = (r + g + b) / 3;
-        if (brightness > 200) {
-          data[i + 3] = 0;
-        } else if (brightness > 170) {
-          data[i + 3] = 0;
-        }
+  const startReprocess = async (imageUrl) => {
+    try {
+      console.log("Reprocessing image URL:", imageUrl); // ✅ Debug line
+  
+      const response = await fetch(imageUrl);
+      if (!response.ok) throw new Error("Image fetch failed");
+  
+      const blob = await response.blob();
+  
+      const formData = new FormData();
+      formData.append("file", new File([blob], "input-image.png", { type: blob.type }));
+  
+      const processResponse = await fetch("http://127.0.0.1:8000/process-image", {
+        method: "POST",
+        body: formData,
+      });
+  
+      if (!processResponse.ok) {
+        throw new Error("Image processing failed on server");
       }
-
-      ctx.putImageData(imageData, 0, 0);
-      const cleanedImage = canvas.toDataURL("image/png");
-      setProcessingImage(cleanedImage);  // show to admin first
-    };
+  
+      const processedBlob = await processResponse.blob();
+      const processedUrl = URL.createObjectURL(processedBlob);
+  
+      setProcessingImage(processedUrl);
+      toast.success("Image processed successfully!");
+    } catch (err) {
+      console.error("Error during image reprocessing:", err);
+      toast.error("Failed to reprocess image.");
+    }
   };
+  
+  
 
   const resetReprocessPopup = () => {
     setSelectedImage(null);
@@ -252,8 +277,11 @@ const EditProduct = ({ token,productData, onClose, onUpdated }) => {
                 <img src={processingImage} alt="Processed" className="w-48 h-auto mx-auto rounded-md" />
                 <div className="flex gap-4 mt-6 justify-center">
                   <button
-                    onClick={() => {
-                      setProcessedImage(processingImage);
+                    onClick={async () => {
+                      const res = await fetch(processingImage);
+                      const blob = await res.blob();
+                      const file = new File([blob], "processedImage.png", { type: "image/png" });
+                      setProcessedImage(file);
                       resetReprocessPopup();
                       toast.success("Image approved for saving!");
                     }}
